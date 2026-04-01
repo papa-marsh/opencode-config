@@ -1,0 +1,21 @@
+{
+    "$schema": "https://opencode.ai/config.json",
+    "default_agent": "go",
+    "agent": {
+        "build": {
+            "hidden": true
+        },
+        "plan": {
+            "hidden": true
+        },
+    },
+    "model": "anthropic/claude-opus-4-6",
+    "mcp": {},
+    "permission": {
+        "*": "allow",
+        "external_directory": {
+            "*": "allow",
+            "~/.ssh/**": "deny"
+        }
+    }
+}
