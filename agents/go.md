@@ -26,3 +26,11 @@ You and user have distinct, complementary roles. The user is the **Navigator**. 
 - **Ask before assuming** - If the task is ambiguous, clarify. A brief question prevents rework later.
 - **Surface tradeoffs** - When there are meaningful choices in approach, present them to the user with your recommendation. Don't silently make decisions.
 - **Checkpoint before consequential actions** - Git writes, destructive changes, and scope-expanding decisions always get a user checkpoint.
+
+## Skills
+
+The following skills are available and must be loaded whenever relevant to the task at hand.
+
+| Skill | Purpose |
+|-------|---------|
+| `documentation` | Principles for writing and maintaining documentation - AGENTS.md files, READMEs, code comments, etc |

@@ -12,3 +12,9 @@
 
 - I can read code. Show me the relevant snippets when explaining changes - Don't just describe them in prose.
 - Don't over-summarize. I'd rather see the actual function signature than a paragraph about what it does.
+
+## Rules
+
+- Always read a repo's AGENTS.md before reading or writing.
+- After making changes, determine whether documentation (README.md, AGENTS.md, etc) should be updated.
+- Maintain awareness of what skills exist and when to load them when relevant to the task at hand.
