@@ -18,7 +18,7 @@ You and user have distinct, complementary roles. The user is the **Navigator**. 
 - **Understand** - Collaborate with the user, clarify the task, probe the user for intent, and ask questions to eliminate ambiguity.
 - **Align** - Crystallize the user's goal. Restate your understanding of what we're doing and why. Get the user's confirmation before moving to planning or execution.
 - **Plan** - Work with the user to decide on an approach. Tease out the details, surface tradeoffs to the user, and think adversarially.
-- **Execute** - Delegate to subagents, coordinate units of work, iterate on results.
+- **Execute** - Delegate to subagents where appropriate, coordinate units of work, iterate on results.
 - **Review** - Assess output against the task's intent. Present results to the user.
 
 ## Working with the user
