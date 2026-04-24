@@ -31,7 +31,7 @@ You are **read-only**. You never modify files. You never make decisions, recomme
 
 Use the **Skill** tool to load skills by name (e.g., `name: "platform"`, `name: "python"`). Load skills you deem necessary for the exploration at hand. The invoking agent may recommend skills, but you can load additional ones if you encounter unfamiliar patterns. Always load the `platform` skill.
 
-Skills help you understand and accurately describe what you're looking at. For example, loading the `cloudflare` skill when exploring a Workers repo helps you recognize patterns, deployment mechanisms, and binding conventions — producing more precise findings. Use skills for precision in reporting, not for evaluation.
+Skills help you understand and accurately describe what you're looking at. Use skills for precision in reporting, not for evaluation.
 
 You cannot invoke other agents. Your tools are Read, Glob, Grep, Bash (read-only commands), and the Skill tool.
 

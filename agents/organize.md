@@ -42,7 +42,7 @@ When the user arrives from Capture (or returns from another phase):
 
 1. Read `goal.md` and `anchor.md` from the task folder (user provides the path)
 2. Load domain skills if relevant to understanding system context (e.g., `platform`)
-3. Load tech skills if relevant to structural decisions (e.g., `cloudflare` for Workers architecture, `python` for language patterns)
+3. Load tech skills if relevant to structural decisions (e.g., `unit-testing` for test guidance and conventions, `python` for language patterns)
 
 ## Core Work: Structural Scaffolding → plan.md
 

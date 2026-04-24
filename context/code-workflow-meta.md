@@ -80,7 +80,6 @@ Loadable knowledge modules. Any agent can load skills via the Skill tool.
 | `authoring-commands` | Task | Process for writing effective OpenCode command files |
 | `authoring-skills` | Task | Process for building effective SKILL.md files |
 | `documentation` | Task | Principles for writing and updating documentation |
-| `cloudflare` | Tech | Workers, Durable Objects, D1, KV, R2 |
 | `python` | Tech | Language patterns, async, typing, testing |
 | `typescript` | Tech | TypeScript conventions — type patterns, Zod usage, error handling, imports, async |
 | `unit-testing` | Task | Philosophy and judgment framework for writing tests that protect real functionality |

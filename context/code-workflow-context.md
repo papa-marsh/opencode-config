@@ -136,7 +136,6 @@ Movement through CODE phases is not always linear. When a later phase reveals a 
 | Skill | Type | Purpose |
 |-------|------|---------|
 | `platform` | Domain | Team platform context: services, architecture, repos, design principles |
-| `cloudflare` | Tech | Workers, Durable Objects, D1, KV, R2 |
 | `python` | Tech | Language patterns, async, typing, testing |
 | `typescript` | Tech | TypeScript conventions — type patterns, Zod usage, error handling, imports, async |
 | `unit-testing` | Task | Philosophy and judgment framework for writing tests that protect real functionality |
