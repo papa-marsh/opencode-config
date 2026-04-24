@@ -20,7 +20,7 @@ The user drives phase transitions by switching between primary agents.
 The entry point. Clarifies intent and establishes ground truth — the facts, constraints, and environment realities that downstream phases cannot violate.
 
 - **Produces:** `goal.md` (crystallized intent) and `anchor.md` (ground truths and constraints)
-- **Invokes:** Research, Jira
+- **Invokes:** Research
 - **Key discipline:** Separate facts from opinions. Anchors are evidence-backed, not speculative.
 
 ### Phase 2: Organize (Expansion)
@@ -44,7 +44,7 @@ The gear shift. Expansion is over — stop exploring, start deciding. Stress-tes
 Turns the distilled plan into production artifacts — code, documentation, tests. Delegates execution to subagents and reviews each unit with the user before proceeding.
 
 - **Produces:** Production artifacts + `summary.md`
-- **Invokes:** Research, Implement, Jira
+- **Invokes:** Research, Implement
 - **Key discipline:** Section-by-section review. Micro-audits at every step. Ownership sign-off.
 
 ---
@@ -135,12 +135,8 @@ Movement through CODE phases is not always linear. When a later phase reveals a 
 
 | Skill | Type | Purpose |
 |-------|------|---------|
-| `cf1int-platform` | Domain | Team platform context: services, architecture, repos, design principles |
-| `workflow-architecture` | Meta | The CODE framework itself: architecture, file inventory, agent topology |
+| `platform` | Domain | Team platform context: services, architecture, repos, design principles |
 | `cloudflare` | Tech | Workers, Durable Objects, D1, KV, R2 |
-| `kafka` | Tech | Kafka and messagebus patterns — topic creation, proto schemas, producers, consumers |
-| `kubernetes` | Tech | Kubernetes operations — cluster topology, workload architecture, manifest management, troubleshooting |
-| `observability` | Tech | Investigating services via ES logs, Sentry, and Prometheus — naming conventions, query patterns, MCP tool usage |
 | `python` | Tech | Language patterns, async, typing, testing |
 | `typescript` | Tech | TypeScript conventions — type patterns, Zod usage, error handling, imports, async |
 | `unit-testing` | Task | Philosophy and judgment framework for writing tests that protect real functionality |

@@ -42,7 +42,7 @@ Design for the frame, not the steps.
 Load skills and establish the agent's mental model before doing any work. A command that jumps straight into action without setting up the right context produces worse results.
 
 ```markdown
-Load the `workflow-architecture` skill for full framework context.
+Load the `<example>` skill for full framework context.
 ```
 
 This isn't ceremony — it's the difference between an agent that understands the broader system and one that operates in a vacuum.
@@ -129,7 +129,7 @@ Write the command file and review it with the user. Validate against:
 After the command is finalized, update framework references:
 
 - Hub AGENTS.md (`~/.opencode/AGENTS.md`) — commands table, if one exists
-- Workflow-architecture skill — command inventory
+- Any relevant context artifacts in `~/.opencode/context/`
 - Any other context docs that reference available commands
 
 ---

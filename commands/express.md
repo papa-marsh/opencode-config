@@ -23,4 +23,4 @@ Key guardrails to internalize before we begin:
 - Delegate, review with the user, approve, next unit. That's the rhythm.
 - Checkpoint with the user before any git writes. No exceptions.
 
-Start by loading the cf1int-platform skill for team-level context.
+Start by loading the `platform` skill for team-level context and read `~/.opencode/context/code-workflow-context.md` to orient your role within the CODE workflow.

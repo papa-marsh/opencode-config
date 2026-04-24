@@ -1,8 +1,3 @@
----
-name: workflow-architecture
-description: The CODE workflow framework - architecture, file inventory, agent topology, design intent, and evolution principles
----
-
 # CODE Workflow Architecture
 
 This skill describes the CODE workflow framework — file inventory, agent topology, artifact flow, and evolution principles. It is a **map**, not a copy. Read individual files for their full contents.
@@ -41,12 +36,6 @@ The framework implements Tiago Forte's **CODE** (Capture, Organize, Distill, Exp
 | `distill.md` | Distill | primary | Convergence 1 | Research, Review, Debug |
 | `express.md` | Express | primary | Convergence 2 | Research, Implement, Review, Jira |
 
-**Non-CODE primary agents** (user-facing, standalone):
-
-| File | Agent | Mode | Purpose | Can Invoke |
-|------|-------|------|---------|------------|
-| `operate.md` | Operate | primary | Single-session orchestrator for tasks that don't need CODE ceremony | All subagents |
-
 **Subagents** (invocable tools, no session context):
 
 | File | Agent | Role | Can Invoke |
@@ -56,8 +45,6 @@ The framework implements Tiago Forte's **CODE** (Capture, Organize, Distill, Exp
 | `review.md` | Review | Fresh-eyes code review. Severity-tiered findings. Read-only. | Research |
 | `architect.md` | Architect | System-level design. Proposals for approval. | Research |
 | `model.md` | Model | Data modeling. Concrete illustrative schemas. | Research |
-| `debug.md` | Debug | Investigation and root cause analysis with evidence. | Research |
-| `jira.md` | Jira | Single Jira interface. Reads via MCP, writes via cloudflared. | None |
 
 **Key topology rules:**
 - Primary agents invoke subagents via the Task tool. Subagents report back to the invoking primary agent.
@@ -89,16 +76,12 @@ Loadable knowledge modules. Any agent can load skills via the Skill tool.
 
 | Skill | Type | Purpose |
 |-------|------|---------|
-| `cf1int-platform` | Domain | Team platform context: services, architecture, repos, design principles |
+| `platform` | Domain | Team platform context: services, architecture, repos, design principles |
 | `authoring-agents-md` | Task | Principles for creating effective AGENTS.md files |
 | `authoring-commands` | Task | Process for writing effective OpenCode command files |
 | `authoring-skills` | Task | Process for building effective SKILL.md files |
 | `documentation` | Task | Principles for writing and updating documentation |
-| `workflow-architecture` | Meta | This skill. The framework itself. |
 | `cloudflare` | Tech | Workers, Durable Objects, D1, KV, R2 |
-| `kafka` | Tech | Kafka and messagebus patterns — topic creation, proto schemas, producers, consumers |
-| `kubernetes` | Tech | Kubernetes operations — cluster topology, workload architecture, manifest management, troubleshooting |
-| `observability` | Tech | Investigating services via ES logs, Sentry, and Prometheus — naming conventions, query patterns, MCP tool usage |
 | `python` | Tech | Language patterns, async, typing, testing |
 | `typescript` | Tech | TypeScript conventions — type patterns, Zod usage, error handling, imports, async |
 | `unit-testing` | Task | Philosophy and judgment framework for writing tests that protect real functionality |
@@ -108,6 +91,15 @@ Loadable knowledge modules. Any agent can load skills via the Skill tool.
 - **Tech** — platform and language patterns. Loaded by subagents during execution; recommended by primary agents in delegations.
 - **Task** — guidance for specific task types. Loaded when a matching task is identified.
 - **Meta** — about the framework itself. Loaded for retrospectives and meta conversations.
+
+### Context References
+
+Context artifacts for specific topics that can be read and referenced as needed. 
+
+| Reference | Purpose |
+|-------|------|---------|
+| `code-workflow-context` | Baseline instructional context for agents that operate as a part of the CODE agentic workflow |
+| `code-workflow-meta` | Meta guidance related to the design intent and evoluntionary principles of the CODE workflow |
 
 ### Platform Configuration (`~/.opencode/opencode.json`)
 
@@ -127,7 +119,7 @@ Standard files:
 - `plan.md` (Organize) — structural scaffolding
 - `summary.md` (Express) — what was done, decisions, follow-ups
 
-Architect and Model may write additional design artifacts to the same folder.
+Additional ad-hoc artifacts may be written to the same folder.
 
 ---
 
@@ -197,11 +189,3 @@ This distinction matters because:
 - **Well-framed context** ("here's how this system works, here's what matters, here's why") equips the agent to make correct decisions in situations beyond what the author imagined.
 
 The practical implication: when authoring or evolving any framework artifact, optimize for *shaping how the agent thinks about the problem* over *specifying what the agent should do*. The right mental model generalizes; a list of instructions does not.
-
----
-
-## Operate Agent
-
-For tasks that do not require the full ceremony of the CODE workflow, there also exists an Operate primary agent. Operate borrows many of the CODE workflow's principles but without the CODE phase contraints. 
-
-The CODE workflow does not leverage Operate in any capacity, but any updates made to the workflow architecture should also take consideration of the Operate agent. 

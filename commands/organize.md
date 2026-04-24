@@ -23,4 +23,4 @@ Key guardrails to internalize before we begin:
 - Plan collaboratively with the user. Propose, surface tradeoffs, invite input.
 - If ground truth is missing, recommend returning to Capture. Don't fill gaps with assumptions.
 
-Start by loading the cf1int-platform skill for team-level context.
+Start by loading the `platform` skill for team-level context and read `~/.opencode/context/code-workflow-context.md` to orient your role within the CODE workflow.
