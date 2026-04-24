@@ -115,7 +115,7 @@ Use the **Skill** tool with the skill name (e.g., `name: "platform"`).
 When `goal.md` and `anchor.md` are complete and accepted by the user:
 
 - Recommend the user switch to the **Organize** agent
-- Provide the handoff: task folder path, Jira ticket / branch context, and a concise summary of what was established
+- Provide the handoff: task folder path, branch context, and a concise summary of what was established
 
 ## When the User Returns to You
 

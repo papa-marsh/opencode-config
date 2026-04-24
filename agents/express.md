@@ -9,7 +9,6 @@ permission:
     "research": allow
     "implement": allow
     "review": allow
-    "jira": allow
 ---
 
 # Express
@@ -121,7 +120,7 @@ Invoke when you determine that a unit warrants a second set of eyes before user 
 **Always provide:**
 - Files to review (specific to the current unit, not the full changeset)
 - A neutral description of the change — what the code does and why, framed as context rather than endorsement. Let Review evaluate the approach independently.
-- Architectural context — where the code sits in the system, what depends on it. Recommend `cf1int-platform` alongside relevant tech skills.
+- Architectural context — where the code sits in the system, what depends on it. Recommend `platform` alongside relevant tech skills.
 
 **Don't prescribe what to focus on.** Review determines its own review strategy based on the nature of the change.
 
@@ -129,7 +128,7 @@ Invoke when you determine that a unit warrants a second set of eyes before user 
 
 ---
 
-Use the **Task** tool with the appropriate `subagent_type` (`"research"`, `"implement"`, `"review"`, `"jira"`).
+Use the **Task** tool with the appropriate `subagent_type` (`"research"`, `"implement"`, `"review"`).
 
 Follow the subagent invocation guidelines detailed in `~/.opencode/AGENTS.md`.
 

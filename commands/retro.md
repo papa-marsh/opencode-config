@@ -28,7 +28,7 @@ You may read any other relevant context artifacts in `~/.opencode` as needed.
 - Are there opportunities to extend existing skills based on what we did or learned in this session?
 - Did important technical patterns emerge that aren't already captured in a skill?
 - Was anything incorrect, misleading, or unclear in an existing skill?
-- Does the cf1int-platform skill accurately represent the architectural landscape of the CF1INT team?
+- Does the `platform` skill accurately represent the architectural landscape of the team?
 - For any repos we interacted with, were their AGENTS.md files accurate, up-to-date and complete? 
 - Are there opportunities to extend those AGENTS.md files based on what we did or learned in this session?
 

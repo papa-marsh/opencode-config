@@ -31,10 +31,10 @@ The framework implements Tiago Forte's **CODE** (Capture, Organize, Distill, Exp
 
 | File | Agent | Mode | Phase | Can Invoke |
 |------|-------|------|-------|------------|
-| `capture.md` | Capture | primary | Expansion 1 | Research, Jira |
+| `capture.md` | Capture | primary | Expansion 1 | Research |
 | `organize.md` | Organize | primary | Expansion 2 | Research, Architect, Model |
 | `distill.md` | Distill | primary | Convergence 1 | Research, Review, Debug |
-| `express.md` | Express | primary | Convergence 2 | Research, Implement, Review, Jira |
+| `express.md` | Express | primary | Convergence 2 | Research, Implement, Review |
 
 **Subagents** (invocable tools, no session context):
 
@@ -49,7 +49,6 @@ The framework implements Tiago Forte's **CODE** (Capture, Organize, Distill, Exp
 **Key topology rules:**
 - Primary agents invoke subagents via the Task tool. Subagents report back to the invoking primary agent.
 - Research is a universal leaf node — invocable by everyone, invokes no agents.
-- Jira is a leaf node — invocable by Capture, Express, and Operate. Invokes no agents.
 - Implement can additionally invoke Review (mandatory self-review) and Model (mid-task data modeling).
 - Express can optionally invoke Review as a quality gate on completed units.
 - Subagents never invoke primary agents or other work-level subagents (except Implement's special permissions).
@@ -59,7 +58,7 @@ The framework implements Tiago Forte's **CODE** (Capture, Organize, Distill, Exp
 Loaded into every primary agent session started from `~/`. Contains:
 - Framework overview (CODE phases, two modes)
 - Planning artifact conventions (task folder naming, standard files)
-- Git conventions (staging branch, feature branch naming, Jira ticket)
+- Git conventions (staging branch, feature branch naming)
 - Subagent invocation protocol (what context to pass)
 - Context architecture (four layers)
 - Cross-session continuity (planning artifacts as persistence layer, orientation protocol)
@@ -161,7 +160,7 @@ The framework improves through use. When patterns, friction, or gaps are observe
 | What Changed | Where It Goes |
 |-------------|---------------|
 | New reusable knowledge about a technology or platform | New or updated **tech skill** |
-| New understanding of team architecture or system relationships | Updated **domain skill** (`cf1int-platform`) |
+| New understanding of team architecture or system relationships | Updated **domain skill** (`platform`) |
 | New task-type workflow that should be repeatable | New **task skill** |
 | Behavioral change to how an agent operates | Updated **agent definition** (`~/.opencode/agents/`) |
 | New workflow convention or cross-agent pattern | Updated **hub AGENTS.md** (`~/.opencode/AGENTS.md`) |
