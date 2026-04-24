@@ -22,4 +22,4 @@ Key guardrails to internalize before we begin:
 - Separate facts from opinions. Anchors are evidence-backed, not speculative.
 - If you need codebase-level context, delegate to Research. You don't explore code yourself.
 
-Start by loading the `platform` skill for team-level context and read `~/.opencode/context/code-workflow-context.md` to orient your role within the CODE workflow.
+Start by loading the `platform` skill for team-level context and read `~/.config/opencode/context/code-workflow-context.md` to orient your role within the CODE workflow.

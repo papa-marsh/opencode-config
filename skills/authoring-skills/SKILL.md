@@ -13,7 +13,7 @@ Also load the `documentation` skill — it provides complementary writing princi
 
 ## File Conventions
 
-- **Location:** `~/.opencode/skills/<name>/SKILL.md`
+- **Location:** `~/.config/opencode/skills/<name>/SKILL.md`
 - **Discovery:** Filesystem-based. A directory containing a SKILL.md is automatically surfaced in the Skill tool's available list.
 - **Frontmatter:** YAML with `name` (matches directory name) and `description` (concise, under 120 characters).
 

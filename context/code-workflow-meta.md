@@ -25,7 +25,7 @@ The framework implements Tiago Forte's **CODE** (Capture, Organize, Distill, Exp
 
 ## File Inventory
 
-### Agent Definitions (`~/.opencode/agents/`)
+### Agent Definitions (`~/.config/opencode/agents/`)
 
 **CODE primary agents** (user-facing, one per CODE phase):
 
@@ -53,23 +53,11 @@ The framework implements Tiago Forte's **CODE** (Capture, Organize, Distill, Exp
 - Express can optionally invoke Review as a quality gate on completed units.
 - Subagents never invoke primary agents or other work-level subagents (except Implement's special permissions).
 
-### Hub Configuration (`~/.opencode/AGENTS.md`)
-
-Loaded into every primary agent session started from `~/`. Contains:
-- Framework overview (CODE phases, two modes)
-- Planning artifact conventions (task folder naming, standard files)
-- Git conventions (staging branch, feature branch naming)
-- Subagent invocation protocol (what context to pass)
-- Context architecture (four layers)
-- Cross-session continuity (planning artifacts as persistence layer, orientation protocol)
-- Non-linear loop protocol (reverse-priority queue, cost model)
-- Available skills reference
-
 ### Global Preferences (`~/.config/opencode/AGENTS.md`)
 
 Loaded automatically by the platform on every session. Personal preferences that apply universally.
 
-### Skills (`~/.opencode/skills/`)
+### Skills (`~/.config/opencode/skills/`)
 
 Loadable knowledge modules. Any agent can load skills via the Skill tool.
 
@@ -99,7 +87,7 @@ Context artifacts for specific topics that can be read and referenced as needed.
 | `code-workflow-context` | Baseline instructional context for agents that operate as a part of the CODE agentic workflow |
 | `code-workflow-meta` | Meta guidance related to the design intent and evoluntionary principles of the CODE workflow |
 
-### Platform Configuration (`~/.opencode/opencode.json`)
+### Platform Configuration (`~/.config/opencode/opencode.json`)
 
 Permission model:
 - All tools allowed by default
@@ -161,10 +149,10 @@ The framework improves through use. When patterns, friction, or gaps are observe
 | New reusable knowledge about a technology or platform | New or updated **tech skill** |
 | New understanding of team architecture or system relationships | Updated **domain skill** (`platform`) |
 | New task-type workflow that should be repeatable | New **task skill** |
-| Behavioral change to how an agent operates | Updated **agent definition** (`~/.opencode/agents/`) |
-| New workflow convention or cross-agent pattern | Updated **hub AGENTS.md** (`~/.opencode/AGENTS.md`) |
+| Behavioral change to how an agent operates | Updated **agent definition** (`~/.config/opencode/agents/`) |
+| New workflow convention or cross-agent pattern | Updated **hub AGENTS.md** (`~/.config/opencode/AGENTS.md`) |
 | New repo-specific patterns or conventions | Updated **repo AGENTS.md** (in the repo) |
-| New slash command for a recurring workflow | New **command** (`~/.opencode/commands/`) |
+| New slash command for a recurring workflow | New **command** (`~/.config/opencode/commands/`) |
 | Personal preference that should apply everywhere | Updated **global preferences** (`~/.config/opencode/AGENTS.md`) |
 
 The key test: **will this knowledge be useful across multiple sessions and contexts?** If yes, it belongs in the framework. If it's specific to one task, it belongs in a planning artifact.

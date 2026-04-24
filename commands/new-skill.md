@@ -2,11 +2,11 @@
 description: Collaborative skill authoring. Extract tacit knowledge, draft and validate a SKILL.md.
 ---
 
-Load the `authoring-skills` skill for authoring principles and validation criteria. Read `~/.opencode/context/code-workflow-context` and `~/.opencode/context/code-workflow-meta` for CODE workflow framework context — skill types, context architecture, where skills fit.
+Load the `authoring-skills` skill for authoring principles and validation criteria. Read `~/.config/opencode/context/code-workflow-context` and `~/.config/opencode/context/code-workflow-meta` for CODE workflow framework context — skill types, context architecture, where skills fit.
 
 The user wants to author a skill named: **$ARGUMENTS**
 
-If a name was provided above, check if `~/.opencode/skills/$1/SKILL.md` already exists. If it does, this is a **revision** — read the existing skill, orient on what's there, and ask the user what they want to change. If it doesn't exist, proceed with new skill authoring using `$1` as the skill directory name.
+If a name was provided above, check if `~/.config/opencode/skills/$1/SKILL.md` already exists. If it does, this is a **revision** — read the existing skill, orient on what's there, and ask the user what they want to change. If it doesn't exist, proceed with new skill authoring using `$1` as the skill directory name.
 
 If no name was provided (i.e. `$ARGUMENTS` is empty or literal), ask the user what skill they want to create.
 
@@ -36,7 +36,7 @@ The conversation should feel like pair-authoring, not Q&A.
 
 ## Draft and Validate
 
-Write a draft SKILL.md directly to `~/.opencode/skills/<name>/SKILL.md`. Follow the structural conventions from authoring-skills (YAML frontmatter, H1 title, H2 sections separated by `---`).
+Write a draft SKILL.md directly to `~/.config/opencode/skills/<name>/SKILL.md`. Follow the structural conventions from authoring-skills (YAML frontmatter, H1 title, H2 sections separated by `---`).
 
 Run the draft through validation with the user:
 
@@ -51,7 +51,7 @@ Refine collaboratively until the user is satisfied.
 
 **After the skill is created**, update all relevant framework references:
 
-- Hub AGENTS.md (`~/.opencode/AGENTS.md`) — available skills table
-- Workflow-architecture skill (`~/.opencode/skills/workflow-architecture/SKILL.md`) — skill inventory
-- Subagent definitions that may need to invoke the skill (`~/.opencode/agents`)
+- Hub AGENTS.md (`~/.config/opencode/AGENTS.md`) — available skills table
+- Workflow-architecture skill (`~/.config/opencode/skills/workflow-architecture/SKILL.md`) — skill inventory
+- Subagent definitions that may need to invoke the skill (`~/.config/opencode/agents`)
 - Any other context docs that reference the skill catalog

@@ -96,12 +96,12 @@ Subagents receive **only** what is passed in the invocation prompt. They have no
 
 ## Context Architecture
 
-| Layer | Location | When Loaded | By Whom |
-|-------|----------|-------------|---------|
-| Personal preferences | `~/.config/opencode/AGENTS.md` | Every session, automatically | Platform |
-| Workflow conventions | `~/.opencode/AGENTS.md` (this file) | Every **primary** agent session from `~/` | Platform |
-| Cross-cutting knowledge | `~/.opencode/skills/` | On-demand | Primary agents and subagents via Skill tool |
-| Repo-specific patterns | `AGENTS.md` in each repo root | During orientation | Subagents via direct read |
+| Layer | Location | When Loaded |
+|-------|----------|-------------|
+| Personal preferences | `~/.config/opencode/AGENTS.md` | Every session, automatically |
+| Cross-cutting knowledge | `~/.config/opencode/skills/` | On-demand when relevant |
+| Repo-specific patterns | `AGENTS.md` in each repo root | During orientation |
+| Situational context | `~/.config/opencode/context/` | When instructed |
 
 ---
 

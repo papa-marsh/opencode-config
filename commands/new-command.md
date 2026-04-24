@@ -2,11 +2,11 @@
 description: Collaborative command authoring. Design session structure, draft and validate a command file.
 ---
 
-Load the `authoring-commands` skill for authoring principles and validation criteria. Read `~/.opencode/context/code-workflow-context` and `~/.opencode/context/code-workflow-meta` for CODE workflow framework context — command inventory, context architecture, where commands fit.
+Load the `authoring-commands` skill for authoring principles and validation criteria. Read `~/.config/opencode/context/code-workflow-context` and `~/.config/opencode/context/code-workflow-meta` for CODE workflow framework context — command inventory, context architecture, where commands fit.
 
 The user wants to author a command named: **$ARGUMENTS**
 
-If a name was provided above, check if `~/.opencode/commands/$1.md` already exists. If it does, this is a **revision** — read the existing command, orient on what's there, and ask the user what they want to change. If it doesn't exist, proceed with new command authoring using `$1` as the filename (without `.md`).
+If a name was provided above, check if `~/.config/opencode/commands/$1.md` already exists. If it does, this is a **revision** — read the existing command, orient on what's there, and ask the user what they want to change. If it doesn't exist, proceed with new command authoring using `$1` as the filename (without `.md`).
 
 If no name was provided (i.e. `$ARGUMENTS` is empty or literal), ask the user what command they want to create.
 
@@ -36,7 +36,7 @@ Push back if the scope is too broad (should be two commands) or too narrow (shou
 
 ## Draft and Validate
 
-Write the command file directly to `~/.opencode/commands/<name>.md`. Follow platform conventions (YAML frontmatter with description, clear prompt structure).
+Write the command file directly to `~/.config/opencode/commands/<name>.md`. Follow platform conventions (YAML frontmatter with description, clear prompt structure).
 
 Run the draft through validation with the user:
 

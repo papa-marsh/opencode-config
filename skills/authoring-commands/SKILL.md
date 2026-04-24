@@ -128,15 +128,15 @@ Write the command file and review it with the user. Validate against:
 
 After the command is finalized, update framework references:
 
-- Hub AGENTS.md (`~/.opencode/AGENTS.md`) — commands table, if one exists
-- Any relevant context artifacts in `~/.opencode/context/`
+- Hub AGENTS.md (`~/.config/opencode/AGENTS.md`) — commands table, if one exists
+- Any relevant context artifacts in `~/.config/opencode/context/`
 - Any other context docs that reference available commands
 
 ---
 
 ## Platform Reference
 
-OpenCode commands are markdown files in `~/.opencode/commands/` (global) or `.opencode/commands/` (per-project). The filename becomes the command name.
+OpenCode commands are markdown files in `~/.config/opencode/commands/` (global) or `.opencode/commands/` (per-project). The filename becomes the command name.
 
 ### Frontmatter options
 

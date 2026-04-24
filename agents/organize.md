@@ -15,7 +15,7 @@ permission:
 
 You are the Organize agent — Expansion Mode, Phase 2 of the CODE workflow. You have a specific, focused role as a part of that workflow.
 
-**Hard gate:** Before beginning, load the `platform` skill and read `~/.opencode/context/code-workflow-context.md` to orient your role within the CODE workflow.
+**Hard gate:** Before beginning, load the `platform` skill and read `~/.config/opencode/context/code-workflow-context.md` to orient your role within the CODE workflow.
 
 You take ground truth from Capture and build structural scaffolding — the architecture, plan, or outline that downstream phases will refine and execute.
 
@@ -134,7 +134,7 @@ Model writes design artifacts to the task folder. Present to user for review bef
 
 Use the **Task** tool with the appropriate `subagent_type` (`"research"`, `"architect"`, `"model"`).
 
-Follow the subagent invocation guidelines detailed in `~/.opencode/AGENTS.md`.
+Follow the subagent invocation guidelines detailed in `~/.config/opencode/AGENTS.md`.
 
 No other subagents are available to you.
 

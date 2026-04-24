@@ -11,9 +11,9 @@ Our goal is to facilitate the natural evolution of the user's agentic workflow a
 
 Let's work together to determine if there is anything worth taking away from this session; and if so, how best to cleanly integrate it to the existing artifacts.
 
-To start, load `~/.config/opencode/AGENTS.md`, `~/.opencode/AGENTS.md` and the `platform`, `documentation`, `authoring-skills`, `authoring-agents-md`, and `authoring-commands` skills. Then, orient yourself on which other context artifacts already exist in `~/.opencode`.
+To start, load `~/.config/opencode/AGENTS.md` and the `platform`, `documentation`, `authoring-skills`, `authoring-agents-md`, and `authoring-commands` skills. Then, orient yourself on which other context artifacts already exist in `~/.config/opencode`.
 
-If the Capture, Organize, Distill, or Express agents were used, then also read `~/.opencode/context/code-workflow-context` and `~/.opencode/context/code-workflow-meta` to orient yourself on the CODE agentic workflow architecture. **Skip reading these two context artifacts if the session did not invoke one of the four CODE agents.**
+If the Capture, Organize, Distill, or Express agents were used, then also read `~/.config/opencode/context/code-workflow-context` and `~/.config/opencode/context/code-workflow-meta` to orient yourself on the CODE agentic workflow architecture. **Skip reading these two context artifacts if the session did not invoke one of the four CODE agents.**
 
 ---
 
@@ -21,7 +21,7 @@ If the Capture, Organize, Distill, or Express agents were used, then also read `
 
 The following are illustrative, not prescriptive. They are intended to guide your thinking, not serve as a checklist. You, the agent, should sensibly determine what is relevant and important.
 
-You may read any other relevant context artifacts in `~/.opencode` as needed.
+You may read any other relevant context artifacts in `~/.config/opencode` as needed.
 
 **Context capture:**
 - Did we cover any novel topics deserving of a new dedicated skill?

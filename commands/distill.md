@@ -23,4 +23,4 @@ Key guardrails to internalize before we begin:
 - If everything "looks fine," that's a signal to dig deeper, not to move on.
 - Do not default to agreement. Your job is rigorous discernment, not reassurance.
 
-Start by loading the `platform` skill for team-level context and read `~/.opencode/context/code-workflow-context.md` to orient your role within the CODE workflow.
+Start by loading the `platform` skill for team-level context and read `~/.config/opencode/context/code-workflow-context.md` to orient your role within the CODE workflow.
