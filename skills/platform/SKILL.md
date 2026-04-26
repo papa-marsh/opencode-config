@@ -43,7 +43,7 @@ All repos live in `~/Repositories`.
 
 ### maestro
 
-**What:** Strongly-typed Python automation framework for Home Assistant. Connects to HA via WebSocket and REST. Runs in Docker on the mac mini.
+**What:** Strongly-typed Python automation framework for Home Assistant. Connects to HA via WebSocket and REST. Runs in Docker on the mac mini. Python 3.14+, Flask, SQLAlchemy, Redis, APScheduler, structlog, uv.
 
 **Repo:** `~/Repositories/maestro`
 
@@ -57,7 +57,7 @@ All repos live in `~/Repositories`.
 
 ### home-assistant-2.0
 
-**What:** The Home Assistant `config/` directory as a git repo. Contains `configuration.yaml`, automations, scenes, Lovelace UI configs, themes, etc.
+**What:** The Home Assistant `config/` directory as a git repo. YAML-based — `configuration.yaml`, automations, scenes, Lovelace UI configs, themes, etc. Ruff and mypy are configured (`ruff.toml`, `mypy.ini`), applying to any Python in the config.
 
 **Repo:** `~/Repositories/home-assistant-2.0` (local clone for editing)
 
@@ -69,7 +69,7 @@ All repos live in `~/Repositories`.
 
 ### meeshbot
 
-**What:** GroupMe bot built with FastAPI + Oxyde ORM. Receives webhook events from GroupMe groups, persists messages, and dispatches slash commands. Runs in Docker on the mac mini.
+**What:** GroupMe bot that receives webhook events, persists messages, and dispatches slash commands. Runs in Docker on the mac mini. Python 3.14+, FastAPI, uvicorn, Oxyde ORM, APScheduler, structlog, uv. Has an `anthropic` dependency for LLM features.
 
 **Repo:** `~/Repositories/meeshbot`
 
@@ -93,7 +93,7 @@ All repos live in `~/Repositories`.
 
 ### http-receiver
 
-**What:** Cloudflare Worker that logs authenticated HTTP requests. A debug/utility tool used to inspect incoming webhook payloads — not a production integration.
+**What:** Cloudflare Worker that logs authenticated HTTP requests. A debug/utility tool for inspecting webhook payloads — not a production integration. TypeScript, Cloudflare Workers runtime.
 
 **Repo:** `~/Repositories/http-receiver`
 
@@ -103,7 +103,7 @@ All repos live in `~/Repositories`.
 
 ### oxyde
 
-**What:** A fork of the [Oxyde ORM](https://github.com/mr-fatalyst/oxyde) — a Django-style async ORM used by meeshbot. The upstream maintainer is responsive to PRs; simple fixes can be made and pushed through this fork.
+**What:** A fork of the [Oxyde ORM](https://github.com/mr-fatalyst/oxyde) — a Django-style async ORM with a Rust core and Python bindings, used by meeshbot. The upstream maintainer is responsive to PRs; simple fixes can be made and pushed through this fork.
 
 **Repo:** `~/Repositories/oxyde`
 
