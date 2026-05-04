@@ -1,6 +1,6 @@
 ---
 description: Guided session reflection. Identify patterns, friction, knowledge gaps. Propose framework updates.
-agent: operate
+agent: go
 ---
 
 ## Session Retrospective
