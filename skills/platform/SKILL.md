@@ -69,7 +69,7 @@ All repos live in `~/Repositories`.
 
 ### meeshbot
 
-**What:** GroupMe bot that receives webhook events, persists messages, and dispatches slash commands. Runs in Docker on the mac mini. Python 3.14+, FastAPI, uvicorn, Oxyde ORM, APScheduler, structlog, uv. Has an `anthropic` dependency for LLM features.
+**What:** GroupMe bot that receives webhook events, persists messages, dispatches slash commands, and generates LLM-driven chat replies via Anthropic Claude. Runs in Docker on the mac mini. Python 3.14+, FastAPI, uvicorn, Oxyde ORM, APScheduler, structlog, uv.
 
 **Repo:** `~/Repositories/meeshbot`
 
