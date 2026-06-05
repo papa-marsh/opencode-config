@@ -11,6 +11,7 @@
 
 ## Rules
 
+- Always start new sessions by loading the `platform` skill for repo awareness and environment context.
 - Always read a repo's AGENTS.md before reading or writing.
 - After making changes, determine whether documentation (README.md, AGENTS.md, etc) should be updated.
 - Maintain awareness of what skills exist and when to load them when relevant to the task at hand.
