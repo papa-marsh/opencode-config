@@ -79,18 +79,6 @@ All repos live in `~/Repositories`.
 
 ---
 
-### rhythm
-
-**What:** iOS cadence-based reminders app. Published to the App Store. Uses SwiftUI + SwiftData + CloudKit for local storage and multi-device sync via iCloud.
-
-**Repo:** `~/Repositories/rhythm`
-
-**Deploy:** Built and submitted via Xcode / App Store Connect. No server-side component — data lives in the user's private iCloud container.
-
-**Note:** Fully vibe-coded. The README.md contains comprehensive technical documentation.
-
----
-
 ### http-receiver
 
 **What:** Cloudflare Worker that logs authenticated HTTP requests. A debug/utility tool for inspecting webhook payloads — not a production integration. TypeScript, Cloudflare Workers runtime.
@@ -98,6 +86,18 @@ All repos live in `~/Repositories`.
 **Repo:** `~/Repositories/http-receiver`
 
 **Deploy:** `wrangler deploy` from the repo root
+
+---
+
+### rhythm
+
+**What:** Native iOS app — a self-populating to-do list for recurring tasks ("cadences" auto-generate their next occurrence "beat" on completion; a grace-period model decides when beats surface, fire notifications, and badge the icon). SwiftUI + SwiftData, synced to the user's private CloudKit database (`iCloud.marshallwarners.RhythmData`). Published on the App Store. No server component — Apple's stack is the whole backend.
+
+**Repo:** `~/Repositories/rhythm` (Xcode project under `Rhythm/`; the original design spec lives in `design_handoff_rhythm/` as read-only reference)
+
+**Deploy:** Xcode → Archive → distribute through App Store Connect (TestFlight, then release). Local dev: build/test against an iOS simulator via `xcodebuild` (commands in the repo's AGENTS.md). CloudKit schema changes must be additive — deploy the CloudKit schema to production via the CloudKit Console before shipping a build that uses it.
+
+**Details:** `rhythm/AGENTS.md`
 
 ---
 
@@ -121,14 +121,14 @@ Maestro (mac mini, Docker)
 
 GroupMe ──webhook──▶ Meeshbot (mac mini, Docker)
 
-Rhythm (iOS / iCloud) — standalone
-
 Cloudflare Workers (edge)
   └─ http-receiver (debug utility)
   └─ <owned_domain>.com (domain + SSH tunnel to mac mini)
+
+iPhone ──iCloud──▶ Rhythm (App Store app; CloudKit private DB is its only backend)
 ```
 
-Maestro is the automation brain: it listens to HA events, runs user-defined trigger scripts, and calls back into HA to control devices. Meeshbot and Maestro are independent services — they don't communicate directly. Rhythm is entirely standalone — data lives in the user's private iCloud container with no server-side component.
+Maestro is the automation brain: it listens to HA events, runs user-defined trigger scripts, and calls back into HA to control devices. Meeshbot and Maestro are independent services — they don't communicate directly. Rhythm is fully standalone in the Apple ecosystem: it touches no homelab infrastructure.
 
 ---
 
@@ -140,4 +140,4 @@ Maestro is the automation brain: it listens to HA events, runs user-defined trig
 | Meeshbot | Mac mini | `ssh ssh.<owned_domain>.com` → `cd ~/Repositories/meeshbot && just pull-deploy` |
 | Home Assistant config | Pi | Finder Samba mount → VSCode git pull |
 | Cloudflare Workers | Cloudflare edge | `wrangler deploy` from repo root |
-| Rhythm | App Store | Xcode → Archive → App Store Connect |
+| Rhythm | App Store | Xcode Archive → App Store Connect (TestFlight → release) |
