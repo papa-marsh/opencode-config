@@ -1,6 +1,6 @@
 ---
 name: authoring-context
-description: Principles for authoring context artifacts (READMEs, AGENTS.md files, skill/commands/agent definitions. ALWAYS load before creating or modifying any documentation or context artifact.
+description: Principles for authoring context artifacts (READMEs, AGENTS.md files, skill/command/agent definitions). ALWAYS load before creating or modifying any documentation or context artifact.
 ---
 
 # Authoring Context

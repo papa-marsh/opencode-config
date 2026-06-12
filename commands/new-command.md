@@ -2,7 +2,7 @@
 description: Collaborative command authoring. Design session structure, draft and validate a command file.
 ---
 
-Load the `authoring-commands` skill for authoring principles and validation criteria. Read `~/.config/opencode/context/code-workflow-context` and `~/.config/opencode/context/code-workflow-meta` for CODE workflow framework context — command inventory, context architecture, where commands fit.
+Load the `authoring-context` skill for authoring principles and validation criteria, and the `customize-opencode` skill for command file mechanics (frontmatter fields, prompt features). Read `~/.config/opencode/context/code-workflow-context` and `~/.config/opencode/context/code-workflow-meta` for CODE workflow framework context — command inventory, context architecture, where commands fit.
 
 The user wants to author a command named: **$ARGUMENTS**
 

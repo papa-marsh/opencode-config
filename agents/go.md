@@ -33,4 +33,7 @@ The following skills are available and must be loaded whenever relevant to the t
 
 | Skill | Purpose |
 |-------|---------|
-| `documentation` | Principles for writing and maintaining documentation - AGENTS.md files, READMEs, code comments, etc |
+| `platform` | Atlas of platform context — system architecture, services, repositories, and how the pieces fit together |
+| `authoring-context` | Principles for authoring documentation and context artifacts — AGENTS.md files, skills, commands, READMEs, design docs |
+| `python` | Team Python conventions — typing, async, data modeling, code style |
+| `unit-testing` | Philosophy and judgment framework for writing tests that protect real functionality |

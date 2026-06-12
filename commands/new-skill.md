@@ -2,7 +2,7 @@
 description: Collaborative skill authoring. Extract tacit knowledge, draft and validate a SKILL.md.
 ---
 
-Load the `authoring-skills` skill for authoring principles and validation criteria. Read `~/.config/opencode/context/code-workflow-context` and `~/.config/opencode/context/code-workflow-meta` for CODE workflow framework context — skill types, context architecture, where skills fit.
+Load the `authoring-context` skill for authoring principles and validation criteria, and the `customize-opencode` skill for skill file mechanics. Read `~/.config/opencode/context/code-workflow-context` and `~/.config/opencode/context/code-workflow-meta` for CODE workflow framework context — skill types, context architecture, where skills fit.
 
 The user wants to author a skill named: **$ARGUMENTS**
 
@@ -29,14 +29,14 @@ This is the core of the process. Draw out the user's knowledge through genuine c
 - **Ask probing questions** — each answer should shape the next question. Push past surface-level descriptions to the specific, contextual knowledge that makes this skill valuable.
 - **Reflect back** what you're hearing to confirm understanding and surface implicit assumptions the user may not realize they're making.
 - **Challenge completeness** — "What would someone get wrong if they only knew this?" / "What's obvious to you but wouldn't be to someone encountering this fresh?"
-- **Filter ruthlessly** — apply the "could an agent figure this out on its own?" test from authoring-skills. If yes, it doesn't belong. The skill should capture what's specific to this context, not restate generally available knowledge.
+- **Filter ruthlessly** — apply the "could an agent figure this out on its own?" test from authoring-context. If yes, it doesn't belong. The skill should capture what's specific to this context, not restate generally available knowledge.
 - **Research on demand** — when the user references a codebase, system, or convention, go look at it to build shared understanding and ask better follow-up questions. For tech/domain skills, exploring relevant repos and systems can ground the conversation. For task/meta skills, lean more on the user's process knowledge.
 
 The conversation should feel like pair-authoring, not Q&A.
 
 ## Draft and Validate
 
-Write a draft SKILL.md directly to `~/.config/opencode/skills/<name>/SKILL.md`. Follow the structural conventions from authoring-skills (YAML frontmatter, H1 title, H2 sections separated by `---`).
+Write a draft SKILL.md directly to `~/.config/opencode/skills/<name>/SKILL.md`. Follow the standard structure: YAML frontmatter (`name`, trigger-oriented `description`), H1 title, H2 sections separated by `---`.
 
 Run the draft through validation with the user:
 
@@ -51,7 +51,6 @@ Refine collaboratively until the user is satisfied.
 
 **After the skill is created**, update all relevant framework references:
 
-- Hub AGENTS.md (`~/.config/opencode/AGENTS.md`) — available skills table
-- Workflow-architecture skill (`~/.config/opencode/skills/workflow-architecture/SKILL.md`) — skill inventory
-- Subagent definitions that may need to invoke the skill (`~/.config/opencode/agents`)
+- Skill inventory tables in `~/.config/opencode/context/code-workflow-meta.md` and `code-workflow-context.md`
+- Agent definitions that may need to invoke the skill (`~/.config/opencode/agents/`), including the Go agent's skills table
 - Any other context docs that reference the skill catalog

@@ -28,7 +28,7 @@ You take the distilled, stress-tested plan and turn it into production reality. 
 - Give subagents *references* so that the subagent can read the actual files
 - Review each unit's output with the user before proceeding
 - Shepherd artifacts through to ownership sign-off
-- Produce relevant documentation where appropriate (after loading the `documentation` skill)
+- Produce relevant documentation where appropriate (after loading the `authoring-context` skill)
 - Produce `summary.md` when the work is complete
 - Recommend backtracking to a prior CODE workflow phase if necessary
 

@@ -62,12 +62,8 @@ Loadable knowledge modules. Any agent can load skills via the Skill tool.
 | Skill | Type | Purpose |
 |-------|------|---------|
 | `platform` | Domain | Team platform context: services, architecture, repos, design principles |
-| `authoring-agents-md` | Task | Principles for creating effective AGENTS.md files |
-| `authoring-commands` | Task | Process for writing effective OpenCode command files |
-| `authoring-skills` | Task | Process for building effective SKILL.md files |
-| `documentation` | Task | Principles for writing and updating documentation |
+| `authoring-context` | Task | Principles for authoring documentation and context artifacts — AGENTS.md files, skills, commands, READMEs |
 | `python` | Tech | Language patterns, async, typing, testing |
-| `typescript` | Tech | TypeScript conventions — type patterns, Zod usage, error handling, imports, async |
 | `unit-testing` | Task | Philosophy and judgment framework for writing tests that protect real functionality |
 
 **Skill types:**

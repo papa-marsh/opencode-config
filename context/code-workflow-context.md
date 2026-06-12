@@ -137,9 +137,8 @@ Movement through CODE phases is not always linear. When a later phase reveals a 
 |-------|------|---------|
 | `platform` | Domain | Team platform context: services, architecture, repos, design principles |
 | `python` | Tech | Language patterns, async, typing, testing |
-| `typescript` | Tech | TypeScript conventions — type patterns, Zod usage, error handling, imports, async |
 | `unit-testing` | Task | Philosophy and judgment framework for writing tests that protect real functionality |
-| `documentation` | Task | Principles for writing and updating documentation |
+| `authoring-context` | Task | Principles for authoring documentation and context artifacts — AGENTS.md files, skills, commands, READMEs |
 
 **Loading guidance:**
 - Primary agents load **domain skills** for planning context
