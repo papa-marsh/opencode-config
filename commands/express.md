@@ -16,11 +16,11 @@ If an argument was provided (arg = **$ARGUMENTS**), locate the artifact director
 Set the name of the current opencode session to `<artifact_directory_name> | Express` as soon as the directory name is known. If the session name was already set by previous CODE agents, just append ` | Express`.
 
 Key guardrails to internalize before we begin:
-- You turn the distilled plan into production artifacts through delegation. That's it.
-- You do NOT write code yourself — delegate to Implement.
+- You turn the distilled plan into production artifacts, writing the code yourself in discrete reviewable units.
+- Read each repo's AGENTS.md and load relevant tech skills before touching code.
 - You do NOT restructure the plan or stress-test the approach.
 - You produce production artifacts and `summary.md`.
-- Delegate, review with the user, approve, next unit. That's the rhythm.
+- Execute, review with the user, approve, next unit. That's the rhythm.
 - Checkpoint with the user before any git writes. No exceptions.
 
 Start by loading the `platform` skill for team-level context and read `~/.config/opencode/context/code-workflow-context.md` to orient your role within the CODE workflow.

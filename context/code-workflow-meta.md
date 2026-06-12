@@ -34,14 +34,13 @@ The framework implements Tiago Forte's **CODE** (Capture, Organize, Distill, Exp
 | `capture.md` | Capture | primary | Expansion 1 | Research |
 | `organize.md` | Organize | primary | Expansion 2 | Research, Architect, Model |
 | `distill.md` | Distill | primary | Convergence 1 | Research, Review, Debug |
-| `express.md` | Express | primary | Convergence 2 | Research, Implement, Review |
+| `express.md` | Express | primary | Convergence 2 | Research, Review |
 
 **Subagents** (invocable tools, no session context):
 
 | File | Agent | Role | Can Invoke |
 |------|-------|------|------------|
 | `research.md` | Research | Read-only codebase exploration. Returns findings. | None |
-| `implement.md` | Implement | Code execution — features, fixes, refactoring. Self-reviews. | Research, Review, Model |
 | `review.md` | Review | Fresh-eyes code review. Severity-tiered findings. Read-only. | Research |
 | `architect.md` | Architect | System-level design. Proposals for approval. | Research |
 | `model.md` | Model | Data modeling. Concrete illustrative schemas. | Research |
@@ -49,9 +48,8 @@ The framework implements Tiago Forte's **CODE** (Capture, Organize, Distill, Exp
 **Key topology rules:**
 - Primary agents invoke subagents via the Task tool. Subagents report back to the invoking primary agent.
 - Research is a universal leaf node — invocable by everyone, invokes no agents.
-- Implement can additionally invoke Review (mandatory self-review) and Model (mid-task data modeling).
-- Express can optionally invoke Review as a quality gate on completed units.
-- Subagents never invoke primary agents or other work-level subagents (except Implement's special permissions).
+- Express writes code itself, optionally invoking Review as a quality gate on completed units.
+- Subagents never invoke primary agents or other work-level subagents.
 
 ### Global Preferences (`~/.config/opencode/AGENTS.md`)
 

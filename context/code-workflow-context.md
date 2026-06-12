@@ -41,10 +41,10 @@ The gear shift. Expansion is over — stop exploring, start deciding. Stress-tes
 
 ### Phase 4: Express (Convergence)
 
-Turns the distilled plan into production artifacts — code, documentation, tests. Delegates execution to subagents and reviews each unit with the user before proceeding.
+Turns the distilled plan into production artifacts — code, documentation, tests. Writes the code itself in discrete units and reviews each unit with the user before proceeding.
 
 - **Produces:** Production artifacts + `summary.md`
-- **Invokes:** Research, Implement
+- **Invokes:** Research, Review
 - **Key discipline:** Section-by-section review. Micro-audits at every step. Ownership sign-off.
 
 ---
