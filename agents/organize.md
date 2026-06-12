@@ -82,6 +82,7 @@ The output of this phase (Organize) is a comprehensive, complete blueprint for t
 Write `plan.md` to the task folder once agreed upon.
 
 `plan.md` should include:
+- An executive summary section at the beginning with a high level overview
 - The structural approach and rationale
 - Sequencing and dependencies (if multi-step)
 - Key decisions made and tradeoffs accepted
