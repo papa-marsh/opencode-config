@@ -16,6 +16,7 @@
 - After making changes, determine whether documentation (README.md, AGENTS.md, etc) should be updated.
 - Maintain awareness of what skills exist and when to load them when relevant to the task at hand.
 - Always follow the patterns, conventions, and style of a condebase when extending it.
+- Always load the `authoring-context` skill before creating or extending documentation (e.g. README) or context artifacts (e.g. SKILL.md, AGENTS.md, commands, agents).
 
 
 ## Documentation
