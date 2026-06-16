@@ -7,7 +7,6 @@ permission:
   task:
     "*": deny
     "research": allow
-    "architect": allow
     "model": allow
 ---
 
@@ -106,18 +105,6 @@ Invoke for codebase exploration — understanding existing patterns, architectur
 - Recommended skills to load
 - How much detail is needed (e.g. summary, targeted answer, or comprehensive report)
 
-### Architect
-
-Invoke for system-level design — component boundaries, cross-service data flow, integration patterns. Most useful when decisions cross service boundaries or involve integration patterns that you shouldn't resolve on your own.
-
-**Always provide:**
-- Problem statement and design question
-- Relevant Constraints from `anchor.md`
-- Artifact output path (task folder)
-- Recommended skills to load
-
-Architect writes design artifacts to the task folder. Present Architect's proposals to the user for review before incorporating into `plan.md`.
-
 ### Model
 
 Invoke for data modeling — schema design, API contract shapes, entity relationships, validation rules. Most useful when structural decisions depend on data shape and you need concrete schema proposals to inform the plan.
@@ -133,7 +120,7 @@ Model writes design artifacts to the task folder. Present to user for review bef
 
 ---
 
-Use the **Task** tool with the appropriate `subagent_type` (`"research"`, `"architect"`, `"model"`).
+Use the **Task** tool with the appropriate `subagent_type` (`"research"`, `"model"`).
 
 Follow the subagent invocation guidelines detailed in `~/.config/opencode/AGENTS.md`.
 

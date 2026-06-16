@@ -32,7 +32,7 @@ The framework implements Tiago Forte's **CODE** (Capture, Organize, Distill, Exp
 | File | Agent | Mode | Phase | Can Invoke |
 |------|-------|------|-------|------------|
 | `capture.md` | Capture | primary | Expansion 1 | Research |
-| `organize.md` | Organize | primary | Expansion 2 | Research, Architect, Model |
+| `organize.md` | Organize | primary | Expansion 2 | Research, Model |
 | `distill.md` | Distill | primary | Convergence 1 | Research, Review, Debug |
 | `express.md` | Express | primary | Convergence 2 | Research, Review |
 
@@ -42,7 +42,6 @@ The framework implements Tiago Forte's **CODE** (Capture, Organize, Distill, Exp
 |------|-------|------|------------|
 | `research.md` | Research | Read-only codebase exploration. Returns findings. | None |
 | `review.md` | Review | Fresh-eyes code review. Severity-tiered findings. Read-only. | Research |
-| `architect.md` | Architect | System-level design. Proposals for approval. | Research |
 | `model.md` | Model | Data modeling. Concrete illustrative schemas. | Research |
 
 **Key topology rules:**
@@ -119,7 +118,7 @@ Additional ad-hoc artifacts may be written to the same folder.
 
 **Artifact flow:**
 1. Capture: `goal.md` → `anchor.md`
-2. Organize: `plan.md` (+ design artifacts from Architect/Model)
+2. Organize: `plan.md` (+ design artifacts from Model)
 3. Distill: Refines `plan.md` (no new artifacts)
 4. Express: Production artifacts + `summary.md`
 
