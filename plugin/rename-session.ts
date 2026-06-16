@@ -27,8 +27,8 @@ export default (async ({ client }) => {
                     })
 
                     return `Renamed session to ${title}`
-                }
-            })
-        }
+                },
+            }),
+        },
     }
 }) satisfies Plugin
