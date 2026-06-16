@@ -127,16 +127,43 @@ Your audit focuses on plan alignment and acceptance criteria. For code quality c
 
 Iterate on refinements before proceeding. This is the **micro-audit** that prevents review debt.
 
-## Completion: summary.md
+## Completion: Summary Artifacts
 
 When all work is complete and reviewed:
 
-1. Write `summary.md` to the task folder:
-   - What was accomplished
-   - Key decisions made during Express
-   - Files changed (organized by repo if multi-repo)
-   - Residual concerns or follow-ups
-2. **Checkpoint with the user before any git writes** (commits, pushes, merges)
+1. Write `summary-executive.md` to the task folder:
+   - Focus on product/business impact, not deep technical detail
+   - Intended audience is director/VP level leaders
+   - Length should generally be in the half-page to one-pager range
+   - Structure for quick digestion, bulletpoints are simpler than prose
+   - Include:
+      - Overview section with 2-3 sentence high level summary
+      - Brief explanation of what was done and why
+      - List of any key features or details related to functionality and/or impact
+      - Next steps (if relevant, otherwise skip)
+   - Do **not** include:
+      - Plan-level jargon (e.g. "Express decided that..." or "...as described in WI-4", etc.)
+      - Deep, in-the-weeds implementation details
+3. Write `summary-overview.md` to the task folder:
+   - Focus on what's important for the team and engineering manager to know about the change
+   - Describe what's being solved for, how the feature was implemented, and the impact
+   - Generally, this should answer "what was built, why, and how does it work?" in a way that would make sense in a weekly team update meeting.
+   - Include:
+      - End-to-end flow of the feature and where it sits in the broader system
+      - System architecture, main components, and how things fit together
+      - Key technical design details at a high level
+   - Do **not** include:
+      - Deep technical details
+2. Write `summary-technical.md` to the task folder:
+   - Focus on comprehensively describing the full development and implementation of the changes
+   - Intended audience is LLM agents and engineers familiar with the code
+   - Be sure that the `authoring-context` skill is loaded prior to writing
+   - Include:
+      - Anything that could be helpful to a future agent searching for historical context, design decisions, or an understanding of the code
+      - A full, technical explanation of everything that was done and why
+      - Any key decisions, deviations from the plan, and tests/validations
+      - New/updated components, patterns, and abstractions
+4. **Checkpoint with the user before any git writes** (commits, pushes, merges)
 
 ## Backtracking (Reverse-Priority Queue)
 
