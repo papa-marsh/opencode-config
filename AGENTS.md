@@ -16,6 +16,7 @@
 - Maintain awareness of what skills exist and when to load them when relevant to the task at hand.
 - Always follow the patterns, conventions, and style of an existing codebase when extending it.
 - Always load the `authoring-context` skill before creating or extending documentation (e.g. README) or context artifacts (e.g. SKILL.md, AGENTS.md, commands, agents).
+- Do not use em dashes ever. Not in documentation, comments, or artifacts.
 
 
 ## Documentation
