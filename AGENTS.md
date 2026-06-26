@@ -19,6 +19,14 @@
 - Do not use em dashes ever. Not in documentation, comments, or artifacts.
 
 
+## Task Folders
+
+- Subdirectories in `~/.config/opencode/plans` are used to persist artifacts; create or read them where appropriate.
+- Folder naming must always follow this format, timestamped to the folder's creation date: `YYMMDD-high-level-title`.
+- Where sensible, (e.g. after planning or implementing a substantial body of work), you may suggest that an artifact be created and persisted to the task folder.
+- Task folder artifacts should target an agent audience unless otherwise specified.
+
+
 ## Documentation
 
 - Documentation describes **how the system works now**. Not what changed. Not why it changed. Not what it used to be.
@@ -28,7 +36,7 @@
 - Not every code change warrants a documentation update. Document what matters. Skip what doesn't. "No updates needed" is a valid and expected outcome.
 - Don't over-document — verbose documentation gets ignored. Concise and accurate beats comprehensive and unread.
 
-## Code Comments & Documentation
+## Code Comments
 
 - Comments should never explain *what* the code does; the code itself should do that.
 - Comments may explain *why* something is done a certain way **only if not intuitively clear**.
