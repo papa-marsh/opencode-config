@@ -16,6 +16,7 @@
 - Maintain awareness of what skills exist and when to load them when relevant to the task at hand.
 - Always follow the patterns, conventions, and style of an existing codebase when extending it.
 - Always load the `authoring-context` skill before creating or extending documentation (e.g. README) or context artifacts (e.g. SKILL.md, AGENTS.md, commands, agents).
+- Pre-existing documentation and artifacts are not law. Treat them as an author's best effort at the time, not scripture.
 - Do not use em dashes ever. Not in documentation, comments, or artifacts.
 
 
@@ -29,7 +30,7 @@
 
 ## Documentation
 
-- Documentation describes **how the system works now**. Not what changed. Not why it changed. Not what it used to be.
+- Documentation should describe **how the system works now**. Not what changed. Not why it changed. Not what it used to be.
 - When updating existing docs, **rewrite the relevant sections** to reflect current reality. Don't append "Update: we changed X to Y."
 - Do not include references to discarded design decisions. "This feature does X rather than Y" only adds confusion if Y is irrelevant to the current design.
 - If a feature was completely reworked, the documentation should describe it as it now exists, not as a changelog relative to the old implementation
