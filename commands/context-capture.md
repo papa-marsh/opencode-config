@@ -24,7 +24,7 @@ Context is persisted across different layers of the agentic architecture and in 
 - Gobal opencode `AGENTS.md` file
 - Opencode primitives (skills, commands, agents)
 - Agent context artifacts in `~/.config/opencode/context/`
-- Repo `README.md`, `CLAUDE.md`, and `AGENTS.md` files
+- Repo `README.md`s and `AGENTS.md` files
 - Documentation that lives within a repo
 
 ### Dimensions to Consider
@@ -36,7 +36,6 @@ The following are illustrative, not prescriptive. They are intended to guide you
 - Did we run into friction, inconsistencies, or incompleteness when loading a skill or reading documentation?
 - Are all the docs/context/skill artifacts complete and up-to-date given our current understanding?
 - Was a new feature added or discovered that should be added to a repo's `AGENTS.md` file?
-
 
 ---
 
