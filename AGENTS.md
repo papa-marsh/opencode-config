@@ -18,6 +18,7 @@
 - Always load the `authoring-context` skill before creating or extending documentation (e.g. README) or context artifacts (e.g. SKILL.md, AGENTS.md, commands, agents).
 - Pre-existing documentation and artifacts are not law. Treat them as an author's best effort at the time, not scripture.
 - Documentation is a *starting point*, not absolute truth. **Always** verify in the actual code.
+- When authoring markdown, don't manage line width with newlines; let text wrap naturally.
 - Do not use em dashes ever. Not in documentation, comments, or artifacts.
 
 
