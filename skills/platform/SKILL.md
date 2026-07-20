@@ -41,17 +41,25 @@ Used for cloud-hosted services and domain infrastructure:
 
 All repos live in `~/Repositories`.
 
-### maestro
+### hass-maestro (library)
 
-**What:** Strongly-typed Python automation framework for Home Assistant. Connects to HA via WebSocket and REST. Runs in Docker on the mac mini. Python 3.14+, Flask, SQLAlchemy, Redis, APScheduler, structlog, uv.
+**What:** Strongly-typed Python automation framework for Home Assistant, packaged as an installable library (import name `maestro`). Connects to HA via WebSocket and REST. Python 3.14+, Flask, SQLAlchemy, Redis, APScheduler, structlog, uv. All initialization is constructor-driven (`MaestroApp`); no import-time side effects. Public repo: `github.com/papa-marsh/hass-maestro`. Published to PyPI as `hass-maestro`; releases are cut by pushing a `v*` git tag, which triggers a GitHub Actions workflow that publishes via PyPI trusted publishing (OIDC, no tokens). CI (ruff, mypy, pytest) runs on GitHub Actions.
 
-**Repo:** `~/Repositories/maestro`
+**Repo:** `~/Repositories/hass-maestro`
 
-**Scripts subrepo:** `~/Repositories/maestro/scripts` — a separate nested git repo (gitignored by maestro) containing personal automation scripts. Loaded at runtime by the framework.
+**Details:** `hass-maestro/AGENTS.md`
 
-**Deploy:** SSH into mac mini → `just pull-deploy` (pulls both `maestro` and `maestro/scripts`, then rebuilds Docker)
+---
 
-**Details:** `maestro/AGENTS.md` and `maestro/scripts/AGENTS.md`
+### maestro (application)
+
+**What:** Personal Home Assistant automations built on hass-maestro; the deployed service. `app.py` constructs the `MaestroApp` from env vars; gunicorn serves `app:app` in Docker on the mac mini (compose stack: maestro + redis + postgres). The library dependency resolves from PyPI, pinned in `uv.lock`. Generated `registry/` modules and `scripts/config/` secrets are gitignored (present on the mini and the local Mac, not in git).
+
+**Repo:** `~/Repositories/maestro` (public: `github.com/papa-marsh/maestro`)
+
+**Deploy:** SSH into mac mini → `cd ~/Repositories/maestro && just pull-deploy`. To pick up new library releases, use the `/upgrade-maestro` command (bumps and tags a hass-maestro release, re-locks the dependency, and deploys).
+
+**Details:** `maestro/AGENTS.md`
 
 ---
 
@@ -117,7 +125,7 @@ Home Assistant (Pi, 192.168.0.107:8123)
     │  WebSocket + REST API
     ▼
 Maestro (mac mini, Docker)
-    └─ maestro/scripts (personal automations)
+    └─ maestro app, built on the hass-maestro library
 
 GroupMe ──webhook──▶ Meeshbot (mac mini, Docker)
 
