@@ -4,12 +4,12 @@
 
 Human-guided engineering using the CODE framework: **Capture, Organize, Distill, Express.**
 
-The user is the **Navigator** — providing anchors of intent and discernment of quality. The AI is the **Engine** — handling structural heavy lifting and high-volume synthesis. Work flows through four phases across two modes:
+The user is the **Navigator** — providing anchors of intent and discernment of quality. The AI is the **Engine** — handling structural heavy lifting and high-volume synthesis. The four phases are complementary working lenses across two modes:
 
 - **Expansion Mode** (Capture + Organize): Widen the aperture. Gather signal, build structure.
 - **Convergence Mode** (Distill + Express): Collapse the waveform. Filter, decide, ship.
 
-The user drives phase transitions by switching between primary agents.
+Each primary agent has a dominant lens. The active agent keeps the task coherent across `goal.md`, `anchor.md`, `plan.md`, and implementation artifacts. When new information invalidates an existing artifact, update the artifacts directly.
 
 ---
 
@@ -33,7 +33,7 @@ Takes ground truth and builds structural scaffolding — architecture, plans, ou
 
 ### Phase 3: Distill (Convergence)
 
-The gear shift. Expansion is over — stop exploring, start deciding. Stress-tests the plan through rigorous discernment: Devil's Advocate, Hallucination Audit, Persona Lens, and other toolkit techniques.
+Applies a convergence bias: prefer filtering and deciding over opening scope, while still pursuing targeted discovery when the audit exposes a gap. Stress-tests the plan through rigorous discernment: Devil's Advocate, Hallucination Audit, Persona Lens, and other toolkit techniques.
 
 - **Produces:** Refined `plan.md` (no new artifacts — refinement of existing work)
 - **Invokes:** Research, Review, Debug
@@ -43,7 +43,7 @@ The gear shift. Expansion is over — stop exploring, start deciding. Stress-tes
 
 Turns the distilled plan into production artifacts — code, documentation, tests. Writes the code itself in discrete units and reviews each unit with the user before proceeding.
 
-- **Produces:** Production artifacts + `summary.md`
+- **Produces:** Production artifacts + `summary-executive.md`, `summary-overview.md`, `summary-technical.md`
 - **Invokes:** Research, Review
 - **Key discipline:** Section-by-section review. Micro-audits at every step. Ownership sign-off.
 
@@ -62,9 +62,13 @@ All planning and design artifacts live in `~/.config/opencode/plans/<task-folder
 | `goal.md` | Capture | Crystallized intent, scope, constraints, success criteria |
 | `anchor.md` | Capture | Ground truths, facts, constraints the solution must respect |
 | `plan.md` | Organize | Structural scaffolding — architecture, task breakdown, sequencing |
-| `summary.md` | Express | What was accomplished, decisions, files changed, follow-ups |
+| `summary-executive.md` | Express | Product and business impact for senior leaders |
+| `summary-overview.md` | Express | Team-level explanation of what was built, why, and how ti works |
+| `summary-technical.md` | Express | Detailed, comprehensive implementation record for future agents |
 
 The Model subagent may write additional design artifacts to the same folder when invoked.
+
+Initial authorship does not imply exclusive ownership. Every primary agent may edit any planning artifact needed to keep the task internally consistent. Preserve each artifact's semantics when editing it: facts in `anchor.md` remain evidence-backed, `goal.md` reflects user intent, and `plan.md` reflects the agreed approach.
 
 ---
 
@@ -115,19 +119,14 @@ Planning artifacts are the persistence layer between ephemeral sessions. When re
 
 ---
 
-## Non-Linear Loop
+## Continuous Coherence
 
-Movement through CODE phases is not always linear. When a later phase reveals a problem, step backward **methodically** — only as far as necessary.
+CODE is not a state machine. Discovery, planning, critique, and implementation often expose changes that belong in artifacts associated with another phase. Handle those changes when they arise.
 
-**Reverse-priority queue** (from any phase, work backward):
-
-1. **Logic wrong → stay in current phase or step to Distill.** Data and structure are fine; reasoning needs refinement. Low cost.
-2. **Structure wrong → step back to Organize.** Crosses the boundary from Convergence to Expansion. Fix the structural flaw and return. Medium cost.
-3. **Facts wrong → step back to Capture.** Underlying ground truth is incorrect or missing. Highest cost.
-
-**Cost model:**
-- **Same-mode** backtrack (e.g., Express → Distill, Organize → Capture): Sharpening. Low cost, high value.
-- **Cross-boundary** backtrack (e.g., Distill → Organize, Express → Capture): Re-opening scope. Dip back only long enough to fix the flaw, then return to Convergence.
+1. Identify which assumptions, facts, decisions, or work items changed.
+2. Update every affected planning artifact in the active session.
+3. Surface material changes to the user, especially changes to intent, scope, constraints, or accepted tradeoffs.
+4. Continue on the current work once the artifacts agree again.
 
 ---
 

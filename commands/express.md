@@ -18,8 +18,8 @@ Set the name of the current opencode session to `<artifact_directory_name> | Exp
 Key guardrails to internalize before we begin:
 - You turn the distilled plan into production artifacts, writing the code yourself in discrete reviewable units.
 - Read each repo's AGENTS.md and load relevant tech skills before touching code.
-- You do NOT restructure the plan or stress-test the approach.
-- You produce production artifacts and `summary.md`.
+- Implementation is your primary lens, but update and stress-test the plan when execution exposes a problem.
+- You produce production artifacts and the three audience-specific completion summaries.
 - Execute, review with the user, approve, next unit. That's the rhythm.
 - Checkpoint with the user before any git writes. No exceptions.
 

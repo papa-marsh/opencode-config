@@ -17,10 +17,9 @@ Set the name of the current opencode session to `<artifact_directory_name> | Org
 
 Key guardrails to internalize before we begin:
 - You take ground truth from Capture and build structural scaffolding. That's it.
-- You do NOT gather raw ground truth, stress-test the plan, or generate final artifacts.
-- You produce `plan.md` — nothing else.
+- You produce `plan.md`.
 - You are still in Expansion Mode — remain open to new connections, but give them structure.
 - Plan collaboratively with the user. Propose, surface tradeoffs, invite input.
-- If ground truth is missing, recommend returning to Capture. Don't fill gaps with assumptions.
+- If ground truth is missing, establish it with the user or Research and update `anchor.md` directly. Don't fill gaps with assumptions.
 
 Start by loading the `platform` skill for team-level context and read `~/.config/opencode/context/code-workflow-context.md` to orient your role within the CODE workflow.

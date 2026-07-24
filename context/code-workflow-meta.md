@@ -8,18 +8,18 @@ This skill describes the CODE workflow framework — file inventory, agent topol
 
 The framework implements Tiago Forte's **CODE** (Capture, Organize, Distill, Express) adapted for turn-based, human-guided software engineering.
 
-**Core model:** The human is the **Navigator** (providing anchors and discernment). The AI is the **Engine** (handling structural heavy lifting and synthesis). The user drives phase transitions by switching between primary agents.
+**Core model:** The human is the **Navigator** (providing anchors and discernment). The AI is the **Engine** (handling structural heavy lifting and synthesis). CODE phases are working lenses, while the planning artifacts form on shared continuously maintained task model.
 
 **Two modes of work:**
 - **Expansion** (Capture + Organize) — widen the aperture, gather signal, build structure
 - **Convergence** (Distill + Express) — collapse the waveform, filter, decide, ship
 
 **Key properties:**
-- The user orchestrates by switching between primary agents. Phase transitions are human decisions.
-- Primary agents are the user's interface — one per CODE phase. They load hub AGENTS.md context automatically.
-- Subagents are invocable tools — they receive only what the invoking agent provides in the prompt. No session context, no hub AGENTS.md.
+- Primary agents give the user a specialized interface for each CODE lens.
+- Every primary agent may update any planning artifact needed to preserve coherence. Initial artifact authorship does not create exclusive ownership.
+- Subagents are invocable tools. They receive no parent conversation or task artifacts beyond what the invoking agent provides.
 - Planning artifacts on disk persist between ephemeral sessions.
-- The non-linear loop allows methodical backtracking when later phases reveal problems.
+- New information is reconciled where it apears. The active agent updates affected artifacts rather than sending the user backward through phases.
 
 ---
 
@@ -78,7 +78,7 @@ Context artifacts for specific topics that can be read and referenced as needed.
 | Reference | Purpose |
 |-------|------|---------|
 | `code-workflow-context` | Baseline instructional context for agents that operate as a part of the CODE agentic workflow |
-| `code-workflow-meta` | Meta guidance related to the design intent and evoluntionary principles of the CODE workflow |
+| `code-workflow-meta` | Meta guidance related to the design intent and evolutionary principles of the CODE workflow |
 
 ### Platform Configuration (`~/.config/opencode/opencode.json`)
 
@@ -96,7 +96,7 @@ Standard files:
 - `goal.md` (Capture) — crystallized intent
 - `anchor.md` (Capture) — ground truths and constraints
 - `plan.md` (Organize) — structural scaffolding
-- `summary.md` (Express) — what was done, decisions, follow-ups
+- `summary-executive.md`, `summary-overview.md`, and `summary-technical.md` (Express) — audience-specific completion summaries
 
 Additional ad-hoc artifacts may be written to the same folder.
 
@@ -108,21 +108,18 @@ Additional ad-hoc artifacts may be written to the same folder.
   EXPANSION                          CONVERGENCE
   ─────────                          ───────────
   Capture ──→ Organize ──→ Distill ──→ Express
-  (Ground      (Structure)   (Filter)    (Artifacts)
+  (Ground     (Structure)  (Filter)    (Artifacts)
    Truth)
-       ↑           ↑           ↑
-       └───────────┴───────────┘
-           Non-Linear Loop
-        (backtrack as needed)
+       ↑           ↑            ↑           ↑
+       └───────────┴────────────┴───────────┘
+                  Shared artifacts
 ```
 
 **Artifact flow:**
 1. Capture: `goal.md` → `anchor.md`
 2. Organize: `plan.md` (+ design artifacts from Model)
 3. Distill: Refines `plan.md` (no new artifacts)
-4. Express: Production artifacts + `summary.md`
-
-**Phase transitions** are driven by the user switching primary agents.
+4. Express: Production artifacts + audience-specific completion summaries
 
 ---
 
