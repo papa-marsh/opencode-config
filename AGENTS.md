@@ -12,8 +12,8 @@
 
 - Always start new sessions by loading the `platform` skill for repo awareness and environment context.
 - Always read a repo's AGENTS.md before reading or writing.
-- After making changes, determine whether documentation (README.md, AGENTS.md, etc) should be updated.
 - Maintain awareness of what skills exist and when to load them when relevant to the task at hand.
+- After making changes, determine whether documentation (README.md, AGENTS.md, etc) should be updated.
 - Always follow the patterns, conventions, and style of an existing codebase when extending it.
 - Always load the `authoring-context` skill before creating or extending documentation (e.g. README) or context artifacts (e.g. SKILL.md, AGENTS.md, commands, agents).
 - Pre-existing documentation and artifacts are not law. Treat them as an author's best effort at the time, not scripture.
@@ -28,6 +28,7 @@
 - Folder naming must always follow this format, timestamped to the folder's creation date: `YYMMDD-high-level-title`.
 - Where sensible, (e.g. after planning or implementing a substantial body of work), you may suggest that an artifact be created and persisted to the task folder.
 - Task folder artifacts should target an agent audience unless otherwise specified.
+- **Every** markdown file generated **must** have `session: <opencode_session_id>` in the frontmatter.
 
 
 ## Documentation
