@@ -28,7 +28,7 @@
 - Folder naming must always follow this format, timestamped to the folder's creation date: `YYMMDD-high-level-title`.
 - Where sensible, (e.g. after planning or implementing a substantial body of work), you may suggest that an artifact be created and persisted to the task folder.
 - Task folder artifacts should target an agent audience unless otherwise specified.
-- **Every** markdown file generated **must** have `session: <opencode_session_id>` in the frontmatter.
+- **Every** markdown file generated **must** have `session: <opencode_session_id>` in the frontmatter. Use `printenv OPENCODE_SESSION_ID` to fetch it.
 
 
 ## Documentation
