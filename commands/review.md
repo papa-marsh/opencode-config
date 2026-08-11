@@ -37,7 +37,7 @@ If a PR is found, the description frames the **author's stated intent** and the 
 
 **Each review is isolated to a dedicated git worktree**, materializing a clean checkout of the source branch: `git -C ~/Repositories/<repo> worktree add ~/.config/opencode/reviews/YYMMDD-<repo>-<pr-id> <source-branch>`. If there is no PR, use the branch name with `/` replaced by `-`. If there is no branch, use a brief hyphen-separated title.
 
-**If a worktree already exists** at the target path, reuse it - ensure it's on the source branch and up to date, then proceed.
+**If a worktree already exists** at the target path, reuse it - ensure it's on the source branch and up to date, then proceed. If the source branch is already checked out in another worktree, create a new worktree as a detached checkout without modifying the original.
 
 All file reads and git operations for this review use the **worktree path**, never the main clone.
 
