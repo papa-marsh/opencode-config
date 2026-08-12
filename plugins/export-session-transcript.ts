@@ -21,7 +21,7 @@ export const SessionExporter: Plugin = async ({ client }) => ({
                 }
 
                 const outputDir = resolve(context.directory, folder)
-                const outputFile = join(outputDir, `${context.sessionID}.json`)
+                const outputFile = join(outputDir, `transcript-${context.sessionID}.json`)
 
                 await mkdir(outputDir, { recursive: true })
                 await writeFile(outputFile, JSON.stringify(response.data, null, 2))
