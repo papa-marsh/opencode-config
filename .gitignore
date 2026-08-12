@@ -5,6 +5,7 @@ bun.lock
 .DS_Store
 
 /plans
-/reviews
 
 transcript-*.json
+/reviews
+
