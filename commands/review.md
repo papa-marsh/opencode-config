@@ -103,7 +103,9 @@ Let Review do its full analysis and return structured findings.
 
 ## Analyze Findings
 
-For each non-trivial finding, invoke a **Research** subagent to validate it. The goal is to deeply research related code, existing patterns, library usage/conventions, cross-repo context, and anything else relevant to determining if the finding is valid.
+For each non-trivial finding, invoke a **Research** subagent to validate it. The goal is to deeply research related code, existing patterns, library usage/conventions, cross-repo context, and anything else relevant to determining if the finding is valid. 
+
+Scope is also an important dimension. If Research reveals that the Review finding is valid but doesn't make sense as a part of this change's scope, flag that in the final output to the user.
 
 In the delegation prompt, provide:
 - Clear instructions on the purpose of the Research task
