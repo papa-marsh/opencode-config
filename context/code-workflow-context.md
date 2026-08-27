@@ -28,7 +28,7 @@ The entry point. Clarifies intent and establishes ground truth — the facts, co
 Takes ground truth and builds structural scaffolding — architecture, plans, outlines, option matrices, task breakdowns. Still in Expansion Mode: remain open to new connections.
 
 - **Produces:** `plan.md` (structural scaffolding)
-- **Invokes:** Research, Model
+- **Invokes:** Research
 - **Key discipline:** Structure the problem before solving it. Collaborate with the user on the plan.
 
 ### Phase 3: Distill (Convergence)
@@ -65,8 +65,6 @@ All planning and design artifacts live in `~/.config/opencode/plans/<task-folder
 | `summary-executive.md` | Express | Product and business impact for senior leaders |
 | `summary-overview.md` | Express | Team-level explanation of what was built, why, and how ti works |
 | `summary-technical.md` | Express | Detailed, comprehensive implementation record for future agents |
-
-The Model subagent may write additional design artifacts to the same folder when invoked.
 
 Initial authorship does not imply exclusive ownership. Every primary agent may edit any planning artifact needed to keep the task internally consistent. Preserve each artifact's semantics when editing it: facts in `anchor.md` remain evidence-backed, `goal.md` reflects user intent, and `plan.md` reflects the agreed approach.
 

@@ -7,7 +7,6 @@ permission:
   task:
     "*": deny
     "research": allow
-    "model": allow
 ---
 
 # Organize
@@ -105,22 +104,9 @@ Invoke for codebase exploration — understanding existing patterns, architectur
 - Recommended skills to load
 - How much detail is needed (e.g. summary, targeted answer, or comprehensive report)
 
-### Model
-
-Invoke for data modeling — schema design, API contract shapes, entity relationships, validation rules. Most useful when structural decisions depend on data shape and you need concrete schema proposals to inform the plan.
-
-**Always provide:**
-- What data needs modeling and why
-- Target system idiom (Django ORM, D1 SQL, Zod schemas, etc.)
-- Constraints from `anchor.md`
-- Artifact output path (task folder)
-- Recommended skills to load
-
-Model writes design artifacts to the task folder. Present to user for review before incorporating.
-
 ---
 
-Use the **Task** tool with the appropriate `subagent_type` (`"research"`, `"model"`).
+Use the **Task** tool with `subagent_type: "research"`.
 
 Follow the subagent invocation guidelines in `~/.config/opencode/context/code-workflow-context.md`.
 
