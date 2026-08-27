@@ -29,6 +29,7 @@
 - Where sensible, (e.g. after planning or implementing a substantial body of work), you may suggest that an artifact be created and persisted to the task folder.
 - Task folder artifacts should target an agent audience unless otherwise specified.
 - **Every** context artifact generated anywhere in `~/.config/opencode` **must** include `session: <opencode_session_id>` in the frontmatter. Use `printenv OPENCODE_SESSION_ID` to fetch it. Do not add additional frontmatter content beyond that. 
+- Unless otherwise specified, task folder artifacts should be treated as having an agent audience. Be comprehensive and don't spare details that a future agent may benefit from.
 
 
 ## Documentation
