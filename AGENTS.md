@@ -16,10 +16,7 @@
 - After making changes, determine whether documentation (README.md, AGENTS.md, etc) should be updated.
 - Always follow the patterns, conventions, and style of an existing codebase when extending it.
 - Always load the `authoring-context` skill before creating or extending documentation (e.g. README) or context artifacts (e.g. SKILL.md, AGENTS.md, commands, agents).
-- Pre-existing documentation and artifacts are not law. Treat them as an author's best effort at the time, not scripture.
-- Documentation is a *starting point*, not absolute truth. **Always** verify in the actual code.
-- When authoring markdown, don't manage line width with newlines; let text wrap naturally.
-- Do not use em dashes ever. Not in documentation, comments, or artifacts.
+- If a self-review raises major concerns that would substantially increase the task scope to address, check in with the user before proceeding.
 
 
 ## Task Folders
@@ -40,6 +37,10 @@
 - If a feature was completely reworked, the documentation should describe it as it now exists, not as a changelog relative to the old implementation
 - Not every code change warrants a documentation update. Document what matters. Skip what doesn't. "No updates needed" is a valid and expected outcome.
 - Don't over-document — verbose documentation gets ignored. Concise and accurate beats comprehensive and unread.
+- Pre-existing documentation and artifacts are not law. Treat them as an author's best effort at the time, not scripture.
+- Documentation is a *starting point*, not absolute truth. **Always** verify in the actual code.
+- When authoring markdown, don't manage line width with newlines; let text wrap naturally.
+- Do not use em dashes ever. Not in documentation, comments, or artifacts.
 
 ## Code Comments
 
