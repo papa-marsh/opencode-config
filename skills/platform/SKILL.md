@@ -164,7 +164,7 @@ Cloudflare Workers (edge)
 iPhone ──iCloud──▶ Rhythm (App Store app; CloudKit private DB is its only backend)
 ```
 
-Maestro is the automation brain: it listens to events from the production Pi, runs user-defined trigger scripts, and calls back into the Pi to control devices. The QEMU VM remains independent during migration. Meeshbot and Maestro are independent services that do not communicate directly. Rhythm is fully standalone in the Apple ecosystem and touches no homelab infrastructure.
+Maestro is the automation brain and a producer of dashboard content: it listens to events from the production Pi, runs user-defined trigger scripts, controls devices, and publishes entity state and attributes through HA's REST API. Lovelace consumes these attributes, so a feature displayed in Home Assistant can be implemented in Maestro. For generated card content, trace the displayed entity attributes to their producer before selecting a repository. The QEMU VM remains independent during migration. Meeshbot and Maestro are independent services that do not communicate directly. Rhythm is fully standalone in the Apple ecosystem and touches no homelab infrastructure.
 
 ---
 
