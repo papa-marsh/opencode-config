@@ -121,6 +121,28 @@ Present all findings to the user, organized by severity (Critical > Major > Mino
 
 **For each finding, present:**
 1. A description in simple, high level terms
-2. Brief code context with files and line numbers
-3. The scope and impact
+2. Scope and code context with files & line numbers
+3. Impact
 4. The effort investment to address it
+
+## Severity Calibration
+
+Every finding is tiered by severity. Calibrate by asking: **"What happens if this ships as-is?"** — not by ranking findings relative to each other within the review.
+
+Severity depends on **impact**, not category. For example, a missing error handler around a critical external call is Major. A catch block that could use a more specific type is a Nit. Both fall under "error handling", but with very different impacts.
+
+| Severity | What happens if it ships | Examples (illustrative, not prescriptive) |
+|----------|------------------------|---------|
+| 🚨 **Critical** | Active harm, data loss, security exposure, silent corruption | Auth bypass, unbounded writes to production data, credentials in source, customer PII in logs |
+| 🔴 **Major** | Broken or wrong functionality, contracts violated, data modeled incorrectly | Logic error that produces wrong results, API response shape diverges from contract, broken database schema migrations |
+| 🟠 **Minor** | Works today but introduces technical debt or makes the codebase harder to maintain/extend | Abstractions that don't match repo patterns, lack of DRYness or SRP, inconsistent directory structure, hand-rolled solution when an established library exists |
+| ⚠️ **Rollout** | Recoverable service interruption during release, temporary friction or downtime while a change rolls out | All temporary deployment-related issues regardless of severity, migration that causes downtime during mixed rollout, API contract inconsistencies between old and new pods |
+| 🟡 **Nit** | Code quality and developer experience suffer | Naming that obscures intent, inconsistent formatting, comments that restate the code |
+
+Each finding includes:
+- Severity tier
+- File path and line reference
+- What the issue is
+- Concise summary of impact
+
+**Note:** For some findings, the impact is limited only to a temporary rollout-related timeframe and recovery is automatic. **All** findings of this class belong in the `Rollout` severity tier, with the `Critial`/`Major`/`Minor`/`Nit` sub-classification in parenthesis. 

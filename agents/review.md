@@ -72,6 +72,7 @@ Severity depends on **impact**, not category. For example, a missing error handl
 | 🚨 **Critical** | Active harm, data loss, security exposure, silent corruption | Auth bypass, unbounded writes to production data, credentials in source, customer PII in logs |
 | 🔴 **Major** | Broken or wrong functionality, contracts violated, data modeled incorrectly | Logic error that produces wrong results, API response shape diverges from contract, broken database schema migrations |
 | 🟠 **Minor** | Works today but introduces technical debt or makes the codebase harder to maintain/extend | Abstractions that don't match repo patterns, lack of DRYness or SRP, inconsistent directory structure, hand-rolled solution when an established library exists |
+| ⚠️ **Rollout** | Recoverable service interruption during release, temporary friction or downtime while a change rolls out | All temporary deployment-related issues regardless of severity, migration that causes downtime during mixed rollout, API contract inconsistencies between old and new pods |
 | 🟡 **Nit** | Code quality and developer experience suffer | Naming that obscures intent, inconsistent formatting, comments that restate the code |
 
 Each finding includes:
@@ -79,6 +80,8 @@ Each finding includes:
 - File path and line reference
 - What the issue is
 - Concise summary of impact
+
+**Note:** For some findings, the impact is limited only to a temporary rollout-related timeframe and recovery is automatic. **All** findings of this class belong in the `Rollout` severity tier, with the `Critial`/`Major`/`Minor`/`Nit` sub-classification in parenthesis. 
 
 ## Output
 
