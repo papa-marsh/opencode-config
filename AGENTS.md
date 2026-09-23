@@ -17,6 +17,7 @@
 - Always follow the patterns, conventions, and style of an existing codebase when extending it.
 - Always load the `authoring-context` skill before creating or extending documentation (e.g. README) or context artifacts (e.g. SKILL.md, AGENTS.md, commands, agents).
 - If a self-review raises major concerns that would substantially increase the task scope to address, check in with the user before proceeding.
+- Any plan (especially a `plan.md`) should be comprehensive enough to make implementation trivial. This requires any necessary research to deeply answer what to build and how to build it and should eliminate any surprised or hidden assumptions that could appear during implementation.
 
 
 ## Task Folders
