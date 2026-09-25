@@ -1,0 +1,1 @@
+../skills/writing-for-humans/SKILL.md
