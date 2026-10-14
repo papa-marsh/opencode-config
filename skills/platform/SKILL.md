@@ -9,19 +9,25 @@ High-level map of the homelab and development environment. Load this skill when 
 
 ---
 
+## Where You and the User Are
+
+OpenCode sessions normally run on the Mac mini, with the user connecting from a separate device through SSH or the web interface. Laptop-local sessions are also possible. Verify your execution host (`hostname`, `$HOME`, working directory) rather than assuming.
+
+---
+
 ## Infrastructure
 
-### Mac Mini (local home server)
+### Mac Mini (central development and home server)
 
-Hosts the long-running Docker services (Maestro, Meeshbot) and the Home Assistant migration VM. SSH is available via Cloudflare Tunnel:
+Hosts OpenCode, the long-running Docker services (Maestro, Meeshbot), and the Home Assistant migration VM. From another device, SSH is available via Cloudflare Tunnel:
 
 ```bash
-ssh ssh.<owned_domain>.com   # user: marshall
+ssh ssh.marshallwarners.com   # user: marshall
 ```
 
-The SSH config uses `cloudflared access ssh` as a ProxyCommand. `cloudflared` must be installed and authenticated locally. `<owned_domain>.com` is the primary domain, managed through Cloudflare.
+The connecting device's SSH config uses `cloudflared access ssh` as a ProxyCommand. `cloudflared` must be installed and authenticated on that device. `marshallwarners.com` is the primary domain, managed through Cloudflare.
 
-To deploy services: SSH in, navigate to the repo, run `just pull-deploy`.
+OpenCode starts at boot and owns the shared sessions and tool execution used by remote CLI and web clients. Its configuration is the `github.com/papa-marsh/opencode-config` repo at `~/.config/opencode`; sessions and credentials remain local to the server. Use the OpenCode skill for product configuration and troubleshooting.
 
 ### Home Assistant VM (migration target)
 
@@ -31,8 +37,8 @@ Runs a fresh Home Assistant OS instance under QEMU on the Apple Silicon Mac mini
 - **VM state:** `~/Services/home-assistant/` on the Mac mini
 - **Service:** system LaunchDaemon `com.marshallwarners.home-assistant`
 - **Live config:** `/config` inside HAOS, versioned at `github.com/papa-marsh/home-assistant`
-- **Shell access:** `hass-ssh` alias connects to the Terminal & SSH add-on and opens `/config`
-- **File access:** mount `smb://192.168.0.145/config` from Finder
+- **Shell access:** SSH to the Terminal & SSH add-on and work in `/config`: `ssh -t root@192.168.0.145 '\''cd /config && exec "${SHELL:-/bin/bash}" -l'\''`
+- **File access:** mount `smb://192.168.0.145/config` from Finder on a LAN-connected user device.
 
 The VM is not production. The Raspberry Pi remains the live Home Assistant instance while integrations, configuration, and automations move incrementally to the VM. Do not treat VM state as authoritative until cutover.
 
@@ -43,16 +49,16 @@ Runs Home Assistant OS at `http://192.168.0.107:8123` on the local network. For 
 ### Cloudflare
 
 Used for cloud-hosted services and domain infrastructure:
-- **`<owned_domain>.com`**: Primary domain used for CF Worker routing and the SSH tunnel hostname to the Mac mini
+- **`marshallwarners.com`**: Primary domain used for CF Worker routing and the SSH/OpenCode tunnel hostnames to the Mac mini
 - **Workers**: Serverless edge functions deployed with `wrangler deploy`
 - **D1 / R2**: SQLite-at-edge and object storage, with no active consumers
-- **Cloudflare Tunnel**: Exposes the Mac mini SSH over the public internet under `ssh.<owned_domain>.com`
+- **Cloudflare Tunnel / Access**: Provides authenticated remote access to the mini's SSH at `ssh.marshallwarners.com` and OpenCode web interface at `opencode.marshallwarners.com`.
 
 ---
 
 ## Repositories
 
-Application repositories live in `~/Repositories` unless a section names another location. The migration VM's Home Assistant repository lives inside HAOS at `/config`.
+Application repositories conventionally live in `~/Repositories`; check for the clone on the execution host. The migration VM's Home Assistant repository lives inside HAOS at `/config`; the OpenCode config repo lives at `~/.config/opencode`.
 
 ### hass-maestro (library)
 
@@ -66,11 +72,11 @@ Application repositories live in `~/Repositories` unless a section names another
 
 ### maestro (application)
 
-**What:** Personal Home Assistant automations built on hass-maestro; the deployed service. `app.py` constructs the `MaestroApp` from env vars; gunicorn serves `app:app` in Docker on the mac mini (compose stack: maestro + redis + postgres). The library dependency resolves from PyPI, pinned in `uv.lock`. Generated `registry/` modules and `scripts/config/` secrets are gitignored (present on the mini and the local Mac, not in git).
+**What:** Personal Home Assistant automations built on hass-maestro; the deployed service. `app.py` constructs the `MaestroApp` from env vars; gunicorn serves `app:app` in Docker on the mac mini (compose stack: maestro + redis + postgres). The library dependency resolves from PyPI, pinned in `uv.lock`. Generated `registry/` modules and `scripts/config/` secrets are gitignored; do not assume they exist in every clone.
 
 **Repo:** `~/Repositories/maestro` (public: `github.com/papa-marsh/maestro`)
 
-**Deploy:** SSH into mac mini → `cd ~/Repositories/maestro && just pull-deploy`. To pick up new library releases, use the `/upgrade-maestro` command (bumps and tags a hass-maestro release, re-locks the dependency, and deploys).
+**Deploy:** On the mini, `cd ~/Repositories/maestro && just pull-deploy`; SSH in first if executing elsewhere. To pick up new library releases, use the `/upgrade-maestro` command (bumps and tags a hass-maestro release, re-locks the dependency, and deploys).
 
 **Details:** `maestro/AGENTS.md`
 
@@ -82,7 +88,7 @@ Application repositories live in `~/Repositories` unless a section names another
 
 **Repo:** Live at `/config` inside the HAOS VM; public remote `github.com/papa-marsh/home-assistant`
 
-**Access:** Run `hass-ssh` for a shell rooted at `/config`, or mount `smb://192.168.0.145/config` and open it in VS Code.
+**Access:** Run `ssh -t root@192.168.0.145 '\''cd /config && exec "${SHELL:-/bin/bash}" -l'\''` for a shell rooted at `/config`, or mount `smb://192.168.0.145/config` and open it in VS Code.
 
 **Runtime status:** Migration target only. Changes do not affect the production Pi unless applied there separately.
 
@@ -106,7 +112,7 @@ Application repositories live in `~/Repositories` unless a section names another
 
 **Repo:** `~/Repositories/meeshbot`
 
-**Deploy:** SSH into mac mini → `just pull-deploy`
+**Deploy:** On the mini, `cd ~/Repositories/meeshbot && just pull-deploy`; SSH in first if executing elsewhere.
 
 **Details:** `meeshbot/AGENTS.md`
 
@@ -128,7 +134,7 @@ Application repositories live in `~/Repositories` unless a section names another
 
 **Repo:** `~/Repositories/rhythm` (Xcode project under `Rhythm/`; the original design spec lives in `design_handoff_rhythm/` as read-only reference)
 
-**Deploy:** Xcode → Archive → distribute through App Store Connect (TestFlight, then release). Local dev: build/test against an iOS simulator via `xcodebuild` (commands in the repo's AGENTS.md). CloudKit schema changes must be additive. Deploy the CloudKit schema to production through the CloudKit Console before shipping a build that uses it.
+**Deploy:** On a Mac with Xcode and signing access: Archive → distribute through App Store Connect (TestFlight, then release). Build/test against an iOS simulator via `xcodebuild` (commands in the repo's AGENTS.md); verify those tools exist on the execution host. CloudKit schema changes must be additive. Deploy the CloudKit schema to production through the CloudKit Console before shipping a build that uses it.
 
 **Details:** `rhythm/AGENTS.md`
 
@@ -159,7 +165,10 @@ GroupMe ──webhook──▶ Meeshbot (mac mini, Docker)
 
 Cloudflare Workers (edge)
   └─ http-receiver (debug utility)
-  └─ <owned_domain>.com (domain + SSH tunnel to mac mini)
+  └─ marshallwarners.com (domain + SSH/OpenCode tunnel to mac mini)
+
+Laptop CLI (SSH) / remote browser (Cloudflare Access + pairing)
+    └─ OpenCode (Mac mini, shared server) → mini files, tools, sessions, credentials
 
 iPhone ──iCloud──▶ Rhythm (App Store app; CloudKit private DB is its only backend)
 ```
@@ -172,9 +181,10 @@ Maestro is the automation brain and a producer of dashboard content: it listens 
 
 | Service | Where | How |
 |---|---|---|
-| Maestro | Mac mini | `ssh ssh.<owned_domain>.com` → `cd ~/Repositories/maestro && just pull-deploy` |
-| Meeshbot | Mac mini | `ssh ssh.<owned_domain>.com` → `cd ~/Repositories/meeshbot && just pull-deploy` |
+| OpenCode | Mac mini | Remote SSH CLI or Access-protected web client |
+| Maestro | Mac mini | `cd ~/Repositories/maestro && just pull-deploy`; SSH only from another host |
+| Meeshbot | Mac mini | `cd ~/Repositories/meeshbot && just pull-deploy`; SSH only from another host |
 | Home Assistant config (production) | Pi | Finder Samba mount → VS Code git pull |
-| Home Assistant config (migration target) | QEMU VM on Mac mini | `hass-ssh` or Finder Samba mount → edit `/config` and use Git |
+| Home Assistant config (migration target) | QEMU VM on Mac mini | VM SSH → `/config` and Git, or Finder Samba mount → edit `/config` and use Git |
 | Cloudflare Workers | Cloudflare edge | `wrangler deploy` from repo root |
-| Rhythm | App Store | Xcode Archive → App Store Connect (TestFlight → release) |
+| Rhythm | App Store | Development Mac with Xcode/signing: Archive → App Store Connect (TestFlight → release) |
