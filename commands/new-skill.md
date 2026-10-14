@@ -2,7 +2,7 @@
 description: Collaborative skill authoring. Extract tacit knowledge, draft and validate a SKILL.md.
 ---
 
-Load the `authoring-context` skill for authoring principles and validation criteria, and the `customize-opencode` skill for skill file mechanics. Read `~/.config/opencode/context/code-workflow-context` and `~/.config/opencode/context/code-workflow-meta` for CODE workflow framework context — skill types, context architecture, where skills fit.
+Load the `authoring-context` skill for authoring principles and validation criteria, and the `opencode` skill for skill file mechanics. Read `~/.config/opencode/context/code-workflow-context` and `~/.config/opencode/context/code-workflow-meta` for CODE workflow framework context — skill types, context architecture, where skills fit.
 
 The user wants to author a skill named: **$ARGUMENTS**
 
