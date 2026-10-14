@@ -127,9 +127,11 @@ Present all findings to the user, organized by severity (Critical > Major > Mino
 
 ## Severity Calibration
 
-Every finding is tiered by severity. Calibrate by asking: **"What happens if this ships as-is?"** — not by ranking findings relative to each other within the review.
+Every finding is tiered by severity. Calibrate by asking: **"What happens if this ships as-is?"**. Plenty of reviews do not yield any findings. That's fine and should not be treated as an indicator of an incomplete review.
 
-Severity depends on **impact**, not category. For example, a missing error handler around a critical external call is Major. A catch block that could use a more specific type is a Nit. Both fall under "error handling", but with very different impacts.
+Severity is the product of **impact** and **liklihood**. Do not over-index on edge cases. In the real world, pragmatism is better than academic perfection. Ignoring a rare edge case could very well be a more prudent tradeoff than the liability of adding the code that fixes it. Know where to draw the line of "good enough" without getting lost chasing diminishing returns.
+
+Category does not determine severity. A missing error handler around a critical external call is Major but a catch block that could use a more specific type is a Nit. Both fall under "error handling", but with very different impacts.
 
 | Severity | What happens if it ships | Examples (illustrative, not prescriptive) |
 |----------|------------------------|---------|
