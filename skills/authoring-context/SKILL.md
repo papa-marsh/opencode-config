@@ -80,7 +80,7 @@ Before writing, answer three questions:
 
 The `description` frontmatter determines whether the skill ever gets loaded: cover what it does *and* when to trigger it, front-loading concrete keywords.
 
-For file locations and frontmatter mechanics, load `customize-opencode`.
+For file locations and frontmatter mechanics, load `opencode`.
 
 ---
 
@@ -99,7 +99,7 @@ Validate a command against four tests: **cold-start** (executable correctly on f
 
 After creating a command, update framework references (hub AGENTS.md command tables, context artifacts).
 
-For file locations, frontmatter fields, and prompt features, load `customize-opencode`.
+For file locations, frontmatter fields, and prompt features, load `opencode`.
 
 ---
 
