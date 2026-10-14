@@ -8,5 +8,11 @@
     "scrollbar": true,
     "thinking": "show"
   },
-  "animations": true
+  "animations": true,
+  "tabs": {
+    "mode": "off"
+  },
+  "prompt": {
+    "paste": "full"
+  }
 }
