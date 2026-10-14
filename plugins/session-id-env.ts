@@ -1,11 +1,8 @@
-import type { Plugin } from "@opencode-ai/plugin"
+import { Plugin } from "@opencode/plugin"
 
-export default (async () => {
-    return {
-        "shell.env": async (input, output) => {
-            if (input.sessionID) {
-                output.env.OPENCODE_SESSION_ID = input.sessionID
-            }
-        },
-    }
-}) satisfies Plugin
+export default Plugin.define({
+    id: "session-id-env",
+    setup() {
+        // OpenCode injects OPENCODE_SESSION_ID per shell call, so no hook is needed.
+    },
+})

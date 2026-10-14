@@ -1,33 +1,50 @@
+import { execFile } from "node:child_process"
 import { mkdir, writeFile } from "node:fs/promises"
 import { join, resolve } from "node:path"
-import type { Plugin } from "@opencode-ai/plugin"
-import { tool } from "@opencode-ai/plugin"
+import { promisify } from "node:util"
+import { Plugin } from "@opencode/plugin"
 
-export const SessionExporter: Plugin = async ({ client }) => ({
-    tool: {
-        dump_session: tool({
-            description: "Export the complete persisted OpenCode session transcript",
-            args: {
-                folder: tool.schema.string(),
-            },
-            async execute({ folder }, context) {
-                const response = await client.session.messages({
-                    path: { id: context.sessionID },
-                    query: { directory: context.directory },
-                })
+const execFileAsync = promisify(execFile)
 
-                if (response.error) {
-                    throw new Error(`Failed to load session: ${JSON.stringify(response.error)}`)
-                }
+export default Plugin.define({
+    id: "export-session-transcript",
+    async setup(ctx) {
+        await ctx.tool.transform((editor) => {
+            editor.add({
+                name: "dump_session",
+                description: "Export the complete persisted OpenCode session transcript",
+                input: {
+                    type: "object",
+                    properties: { folder: { type: "string" } },
+                    required: ["folder"],
+                    additionalProperties: false,
+                },
+                async execute(input, context) {
+                    const { folder } = input as { folder: string }
+                    const session = await ctx.session.get({ sessionID: context.sessionID })
+                    const directory = resolve(session.location.directory, session.subpath ?? "")
+                    // The plugin context lacks export; the CLI preserves server discovery and authentication.
+                    const { stdout } = await execFileAsync("opencode", [
+                        "api", "get",
+                        `/api/experimental/session/${encodeURIComponent(context.sessionID)}/export?sanitize=false`,
+                    ], {
+                        cwd: directory,
+                        signal: context.signal,
+                        maxBuffer: 64 * 1024 * 1024,
+                    })
+                    const response: { data?: { messages?: unknown[] } } = JSON.parse(stdout)
+                    if (!Array.isArray(response.data?.messages)) {
+                        throw new Error("Session export did not return a transcript")
+                    }
+                    const outputDir = resolve(directory, folder)
+                    const outputFile = join(outputDir, `transcript-${context.sessionID}.json`)
 
-                const outputDir = resolve(context.directory, folder)
-                const outputFile = join(outputDir, `transcript-${context.sessionID}.json`)
+                    await mkdir(outputDir, { recursive: true })
+                    await writeFile(outputFile, JSON.stringify(response.data.messages, null, 2))
 
-                await mkdir(outputDir, { recursive: true })
-                await writeFile(outputFile, JSON.stringify(response.data, null, 2))
-
-                return `Exported session transcript to ${outputFile}`
-            },
-        }),
+                    return { content: `Exported session transcript to ${outputFile}` }
+                },
+            })
+        })
     },
 })
