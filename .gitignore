@@ -6,6 +6,8 @@ bun.lock
 
 /plans
 
+service.json
+
 transcript-*.json
 /reviews
 
