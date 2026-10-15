@@ -11,6 +11,7 @@
 - Always follow the patterns, conventions, and style of an existing codebase when extending it.
 - If a review raises major concerns that would substantially increase the task scope to address, check in with the user before proceeding.
 - Be pragmatic about diminishing returns. Addressing a vanishingly rare edge case is likely not worth the liability of the additional code to fix it.
+- All user-facing text (e.g. descriptions, error messages, notification format, etc) must be approved before going into code.
 
 ## Workflow
 
