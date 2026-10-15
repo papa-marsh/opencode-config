@@ -1,24 +1,24 @@
-## User Context
+**Collaboration**
 
-- I am an experienced senior software engineer. Keep me informed, let me steer, don't abstract away the details I care about.
+- The user is a staff software engineer in the tech industry with extensive AI experience. This is his homelab environment.
+- In modern software development, agents author code, not humans. Don't assume that the user is (or needs to be) familiar with granular details about the code.
+- Lean toward higher level terms in your communication with the user rather than focusing on deeper implementation mechanics or repo-specific jargon.
+- When you run into something unexpected or ambiguous, escalate to the user - don't silently work around it or make assumptions.
 
-**Collaboration Model**
+## Operational Rules
 
-- For complex tasks, I want to understand and approve the approach before implementation starts. Don't jump straight to writing code.
-- Surface your reasoning, not just your conclusions so that I can course-correct early if I see a wrong assumption.
-- When you run into something unexpected or ambiguous, escalate to me - don't silently work around it or make assumptions
+- While and after making changes, make sure to update and relevant documentation (`README.md`, `AGENTS.md`, skills, etc).
+- Always follow the patterns, conventions, and style of an existing codebase when extending it.
+- If a review raises major concerns that would substantially increase the task scope to address, check in with the user before proceeding.
+- Be pragmatic about diminishing returns. Addressing a vanishingly rare edge case is likely not worth the liability of the additional code to fix it.
 
-## Rules
+## Workflow
 
 - Always start new sessions by loading the `platform` skill for repo awareness and environment context.
-- Always read a repo's AGENTS.md before reading or writing.
+- Always read a repo's `README` and `AGENTS.md` (or equivalent) before reading or writing.
 - Maintain awareness of what skills exist and when to load them when relevant to the task at hand.
-- After making changes, determine whether documentation (README.md, AGENTS.md, etc) should be updated.
-- Always follow the patterns, conventions, and style of an existing codebase when extending it.
 - Always load the `authoring-context` skill before creating or extending documentation (e.g. README) or context artifacts (e.g. SKILL.md, AGENTS.md, commands, agents).
-- If a self-review raises major concerns that would substantially increase the task scope to address, check in with the user before proceeding.
-- Any plan (especially a `plan.md`) should be comprehensive enough to make implementation trivial. This requires any necessary research to deeply answer what to build and how to build it and should eliminate any surprised or hidden assumptions that could appear during implementation.
-
+- Any plan (including `plan.md`) should be complete enough to make implementation mostly trivial and eliminate any surprised or hidden assumptions that could appear during implementation.
 
 ## Task Folders
 
@@ -26,9 +26,8 @@
 - Folder naming must always follow this format, timestamped to the folder's creation date: `YYMMDD-high-level-title`.
 - Where sensible, (e.g. after planning or implementing a substantial body of work), you may suggest that an artifact be created and persisted to the task folder.
 - Task folder artifacts should target an agent audience unless otherwise specified.
-- **Every** context artifact generated anywhere in `~/.config/opencode` **must** include `session: <opencode_session_id>` in the frontmatter. Use `printenv OPENCODE_SESSION_ID` to fetch it. Do not add additional frontmatter content beyond that. 
+- All markdown files generated in the `~/.config/opencode` repo must include `session: <opencode_session_id>` in the frontmatter (`printenv OPENCODE_SESSION_ID`).
 - Unless otherwise specified, task folder artifacts should be treated as having an agent audience. Be comprehensive and don't spare details that a future agent may benefit from.
-
 
 ## Documentation
 
@@ -40,8 +39,8 @@
 - Don't over-document — verbose documentation gets ignored. Concise and accurate beats comprehensive and unread.
 - Pre-existing documentation and artifacts are not law. Treat them as an author's best effort at the time, not scripture.
 - Documentation is a *starting point*, not absolute truth. **Always** verify in the actual code.
+- Don't use em dashes.
 - When authoring markdown, don't manage line width with newlines; let text wrap naturally.
-- Do not use em dashes ever. Not in documentation, comments, or artifacts.
 
 ## Code Comments
 
