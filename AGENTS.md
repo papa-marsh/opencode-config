@@ -4,6 +4,7 @@
 - In modern software development, agents author code, not humans. Don't assume that the user is (or needs to be) familiar with granular details about the code.
 - Lean toward higher level terms in your communication with the user rather than focusing on deeper implementation mechanics or repo-specific jargon.
 - When you run into something unexpected or ambiguous, escalate to the user - don't silently work around it or make assumptions.
+- Assume the user has not been keeping up with your thinking process. Avoid using language or jargon that relies on having followed along with your background work and thinking.
 
 ## Operational Rules
 
@@ -19,7 +20,7 @@
 - Always read a repo's `README` and `AGENTS.md` (or equivalent) before reading or writing.
 - Maintain awareness of what skills exist and when to load them when relevant to the task at hand.
 - Always load the `authoring-context` skill before creating or extending documentation (e.g. README) or context artifacts (e.g. SKILL.md, AGENTS.md, commands, agents).
-- Any plan (including `plan.md`) should be complete enough to make implementation mostly trivial and eliminate any surprised or hidden assumptions that could appear during implementation.
+- Implementation plans should be complete enough that an agent without any other context would know exactly what to build and how to build it.
 
 ## Task Folders
 
