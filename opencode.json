@@ -15,7 +15,7 @@
             "disable": true
         }
     },
-    "model": "openai/gpt-6.1-sol",
+    "model": "openai/gpt-6-astra",
     "mcp": {},
     "permission": {
         "*": "allow",
