@@ -44,7 +44,12 @@ The VM is not production. The Raspberry Pi remains the live Home Assistant insta
 
 ### Raspberry Pi (live Home Assistant)
 
-Runs Home Assistant OS at `http://192.168.0.107:8123` on the local network. For file editing, mount the Pi through Samba, open the `config/` folder in VS Code, and use VS Code's Git integration to pull and push. There is no SSH workflow for the Pi.
+Runs Home Assistant OS at `http://192.168.0.107:8123` on the local network.
+
+- **Shell access:** SSH to `192.168.0.107:22` through the Advanced SSH & Web Terminal add-on and work in `/config` (resolves to `/homeassistant`).
+- **Credentials:** Use `HOME_ASSISTANT_PI_SSH_USERNAME` and `HOME_ASSISTANT_PI_SSH_PASSWORD` from `~/.config/opencode/.env` on the Mac mini. Do not print credentials or include passwords in command arguments or documentation. For automated password entry, `expect` is available on the Mac mini.
+- **Git access:** The live repository is root-owned, and `.git/config` is readable only by root. The SSH user has passwordless sudo; run Git as the repository owner with `sudo -n git -C /config ...`. Inspect status before pulling and preserve local changes. A `safe.directory` exception alone does not grant filesystem access. Do not change HA file ownership or disable Git ownership checks globally.
+- **File access:** Mount `smb://192.168.0.107/config` for editing through Samba.
 
 ### Cloudflare
 
@@ -100,9 +105,9 @@ Application repositories conventionally live in `~/Repositories`; check for the 
 
 **Repo:** `~/Repositories/home-assistant-2.0` (local clone for editing)
 
-**Deploy:** Mount the Pi via Samba → open `config/` in VS Code → git pull via VS Code UI. Changes take effect when HA reloads or restarts.
+**Deploy:** SSH to the Pi using the credentials described above, inspect the live repository in `/config`, and pull the intended changes. Changes are live  when HA reloads or restarts. Samba with VS Code's Git integration is also available.
 
-**Note:** The Pi's HA instance is the source of truth at runtime. The git repo is the version-controlled source; syncing them requires the Samba workflow above.
+**Note:** The Pi's HA instance is the source of truth at runtime. Pulling the Mac's local clone does not update the Pi's live configuration.
 
 ---
 
@@ -184,7 +189,7 @@ Maestro is the automation brain and a producer of dashboard content: it listens 
 | OpenCode | Mac mini | Remote SSH CLI or Access-protected web client |
 | Maestro | Mac mini | `cd ~/Repositories/maestro && just pull-deploy`; SSH only from another host |
 | Meeshbot | Mac mini | `cd ~/Repositories/meeshbot && just pull-deploy`; SSH only from another host |
-| Home Assistant config (production) | Pi | Finder Samba mount → VS Code git pull |
+| Home Assistant config (production) | Pi | SSH using credentials in `~/.config/opencode/.env` → `/config` → Git |
 | Home Assistant config (migration target) | QEMU VM on Mac mini | VM SSH → `/config` and Git, or Finder Samba mount → edit `/config` and use Git |
 | Cloudflare Workers | Cloudflare edge | `wrangler deploy` from repo root |
 | Rhythm | App Store | Development Mac with Xcode/signing: Archive → App Store Connect (TestFlight → release) |
