@@ -17,6 +17,13 @@
     },
     "model": "openai/gpt-6-astra",
     "mcp": {},
+    "policies": [
+        {
+            "action": "tool.use",
+            "resource": "question:*",
+            "effect": "deny"
+        }
+    ],
     "permission": {
         "*": "allow",
         "external_directory": {
