@@ -31,7 +31,7 @@ If a PR is found, the description frames the **author's stated intent** and the 
 
 **Treat the author's framing as their claim, not established fact**. The review evaluates the change on its own merits.
 
-**Hard Gate:** Rename the agent session to `Review: <repo>/<branch> (@<author>)`.
+**Hard Gate:** Rename the agent session to `Review: <repo> PR #1234 (@author)` (or `Review: <repo>/<branch> (@<author>)` if there is no related pull request).
 
 ## Set Up the Worktree
 
