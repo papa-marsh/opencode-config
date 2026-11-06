@@ -1,6 +1,7 @@
 ---
 name: platform
 description: Atlas of platform context - system architecture, services, repositories, design principles, and how the pieces fit together
+session: ses_e52bea30dffe1LFu85iQD6r5Ot
 ---
 
 # Platform
@@ -33,12 +34,14 @@ OpenCode starts at boot and owns the shared sessions and tool execution used by 
 
 Runs a fresh Home Assistant OS instance under QEMU on the Apple Silicon Mac mini. QEMU uses hardware virtualization and bridges the VM directly to the physical Ethernet interface, so the VM behaves as a standalone LAN device and receives multicast traffic used for device discovery.
 
-- **Address:** `http://192.168.0.145:8123`
+- **Address:** `http://192.168.0.145` (port 80). Use the explicit IP; `homeassistant.local` can resolve to the production Pi.
 - **VM state:** `~/Services/home-assistant/` on the Mac mini
 - **Service:** system LaunchDaemon `com.marshallwarners.home-assistant`
-- **Live config:** `/config` inside HAOS, versioned at `github.com/papa-marsh/home-assistant`
-- **Shell access:** SSH to the Terminal & SSH add-on and work in `/config`: `ssh -t root@192.168.0.145 '\''cd /config && exec "${SHELL:-/bin/bash}" -l'\''`
-- **File access:** mount `smb://192.168.0.145/config` from Finder on a LAN-connected user device.
+- **Live config:** `/config` (resolves to `/homeassistant`) through the Advanced SSH & Web Terminal add-on.
+- **Shell access:** `ssh -t homeassistant@192.168.0.145 'cd /config && exec "${SHELL:-/bin/bash}" -l'` on port 22.
+- **Credentials:** The VM uses the same `HOME_ASSISTANT_PI_SSH_USERNAME` and `HOME_ASSISTANT_PI_SSH_PASSWORD` variables in `~/.config/opencode/.env` on the mini. Despite the variable names, target `192.168.0.145` for VM work. Do not print credentials or put passwords in command arguments; use `expect` for automated password entry.
+- **File access:** Connect VS Code Remote SSH as `homeassistant@192.168.0.145` and open `/config`. The add-on's `ssh.allow_tcp_forwarding` option permits the tunnel VS Code needs. Do not assume Samba is installed.
+- **Permissions:** HA configuration files are root-owned; the SSH user has passwordless sudo. Agents can edit through `sudo -n`. Check repository ownership before running Git, and use `sudo -n git -C /config ...` for a root-owned repository. SSH connectivity alone does not grant VS Code write access. Do not change HA file ownership or globally disable Git ownership checks to work around permissions.
 
 The VM is not production. The Raspberry Pi remains the live Home Assistant instance while integrations, configuration, and automations move incrementally to the VM. Do not treat VM state as authoritative until cutover.
 
@@ -91,9 +94,9 @@ Application repositories conventionally live in `~/Repositories`; check for the 
 
 **What:** The new Home Assistant VM's live `/config` directory as a Git repository. It starts from a fresh HAOS installation and receives configuration incrementally during migration from the Pi.
 
-**Repo:** Live at `/config` inside the HAOS VM; public remote `github.com/papa-marsh/home-assistant`
+**Repo:** Live at `/config` inside the HAOS VM, initialized on `main`. The intended GitHub repository is `github.com/papa-marsh/home-assistant`; publishing this fresh configuration there is pending. Inspect local status and remote configuration before syncing; do not assume GitHub matches the VM or pull its contents into the fresh installation.
 
-**Access:** Run `ssh -t root@192.168.0.145 '\''cd /config && exec "${SHELL:-/bin/bash}" -l'\''` for a shell rooted at `/config`, or mount `smb://192.168.0.145/config` and open it in VS Code.
+**Access:** SSH or VS Code Remote SSH through the VM's Advanced SSH & Web Terminal add-on, as described above. Git is bundled with the add-on. Keep secrets, `.storage/`, databases, logs, and other runtime data out of commits; inspect staged contents before publishing.
 
 **Runtime status:** Migration target only. Changes do not affect the production Pi unless applied there separately.
 
@@ -163,7 +166,7 @@ Home Assistant (Pi, production, 192.168.0.107:8123)
 Maestro (mac mini, Docker)
     └─ maestro app, built on the hass-maestro library
 
-Home Assistant (QEMU VM, migration target, 192.168.0.145:8123)
+Home Assistant (QEMU VM, migration target, 192.168.0.145:80)
     └─ fresh HAOS instance with its own bridged LAN identity
 
 GroupMe ──webhook──▶ Meeshbot (mac mini, Docker)
@@ -190,6 +193,6 @@ Maestro is the automation brain and a producer of dashboard content: it listens 
 | Maestro | Mac mini | `cd ~/Repositories/maestro && just pull-deploy`; SSH only from another host |
 | Meeshbot | Mac mini | `cd ~/Repositories/meeshbot && just pull-deploy`; SSH only from another host |
 | Home Assistant config (production) | Pi | SSH using credentials in `~/.config/opencode/.env` → `/config` → Git |
-| Home Assistant config (migration target) | QEMU VM on Mac mini | VM SSH → `/config` and Git, or Finder Samba mount → edit `/config` and use Git |
+| Home Assistant config (migration target) | QEMU VM on Mac mini | SSH as `homeassistant` → `/config`; use sudo where ownership requires it. VS Code Remote SSH for browsing/editing with appropriate permissions. |
 | Cloudflare Workers | Cloudflare edge | `wrangler deploy` from repo root |
 | Rhythm | App Store | Development Mac with Xcode/signing: Archive → App Store Connect (TestFlight → release) |
