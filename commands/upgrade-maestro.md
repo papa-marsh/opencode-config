@@ -34,10 +34,10 @@ In `~/Repositories/maestro`:
 
 ## 3. Deploy
 
-SSH into the mac mini and deploy:
+Deploy on the mac mini. If already running on the mini, run the command in quotes directly; otherwise SSH in:
 
 ```bash
-ssh ssh.marshallwarners.com "cd ~/Repositories/maestro && just pull-deploy"
+ssh mini "cd ~/Repositories/maestro && just pull-deploy"
 ```
 
 The recipe tails logs after starting the stack; confirm the container comes up cleanly with no startup errors.

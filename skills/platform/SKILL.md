@@ -20,13 +20,12 @@ OpenCode sessions normally run on the Mac mini, with the user connecting from a 
 
 ### Mac Mini (central development and home server)
 
-Hosts OpenCode, the long-running Docker services (Maestro, Meeshbot), and the Home Assistant migration VM. From another device, SSH is available via Cloudflare Tunnel:
+Hosts OpenCode, the long-running Docker services (Maestro, Meeshbot), and the Home Assistant migration VM. The user's laptop SSH config defines two hosts:
 
-```bash
-ssh ssh.marshallwarners.com   # user: marshall
-```
+- `mini` (user `marshall`): connects to `192.168.0.139` on the home network, or through Cloudflare Tunnel at `ssh.marshallwarners.com` when the mini isn't reachable locally. `cloudflared` must be installed and authenticated on the laptop.
+- `hass` (user `homeassistant`): connects to the Home Assistant VM at `192.168.0.145`, directly at home and through `mini` when away.
 
-The connecting device's SSH config uses `cloudflared access ssh` as a ProxyCommand. `cloudflared` must be installed and authenticated on that device. `marshallwarners.com` is the primary domain, managed through Cloudflare.
+Use `ssh mini` or `ssh hass` from the laptop; VS Code Remote SSH uses the same host names. `marshallwarners.com` is the primary domain, managed through Cloudflare.
 
 OpenCode starts at boot and owns the shared sessions and tool execution used by remote CLI and web clients. Its configuration is the `github.com/papa-marsh/opencode-config` repo at `~/.config/opencode`; sessions and credentials remain local to the server. Use the OpenCode skill for product configuration and troubleshooting.
 
@@ -40,7 +39,7 @@ Runs a fresh Home Assistant OS instance under QEMU on the Apple Silicon Mac mini
 - **Live config:** `/config` (resolves to `/homeassistant`) through the Advanced SSH & Web Terminal add-on.
 - **Shell access:** `ssh -t homeassistant@192.168.0.145 'cd /config && exec "${SHELL:-/bin/bash}" -l'` on port 22.
 - **Credentials:** The VM uses the same `HOME_ASSISTANT_PI_SSH_USERNAME` and `HOME_ASSISTANT_PI_SSH_PASSWORD` variables in `~/.config/opencode/.env` on the mini. Despite the variable names, target `192.168.0.145` for VM work. Do not print credentials or put passwords in command arguments; use `expect` for automated password entry.
-- **File access:** Connect VS Code Remote SSH as `homeassistant@192.168.0.145` and open `/config`. The add-on's `ssh.allow_tcp_forwarding` option permits the tunnel VS Code needs. Do not assume Samba is installed.
+- **File access:** Connect VS Code Remote SSH to the `hass` host from the laptop and open `/config`. The add-on's `ssh.allow_tcp_forwarding` option permits the tunnel VS Code needs. Do not assume Samba is installed.
 - **Permissions:** HA configuration files are root-owned; the SSH user has passwordless sudo. Agents can edit through `sudo -n`. Check repository ownership before running Git, and use `sudo -n git -C /config ...` for a root-owned repository. SSH connectivity alone does not grant VS Code write access. Do not change HA file ownership or globally disable Git ownership checks to work around permissions.
 
 The VM is not production. The Raspberry Pi remains the live Home Assistant instance while integrations, configuration, and automations move incrementally to the VM. Do not treat VM state as authoritative until cutover.
