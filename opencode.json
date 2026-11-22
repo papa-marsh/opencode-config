@@ -1,7 +1,8 @@
 {
     "$schema": "https://opencode.ai/config.json",
     "default_agent": "go",
-    "agent": {
+    "model": "anthropic/claude-opus-5-5",
+    "agents": {
         "build": {
             "hidden": true
         },
@@ -9,14 +10,12 @@
             "hidden": true
         },
         "general": {
-            "disable": true
+            "disabled": true
         },
         "explore": {
-            "disable": true
+            "disabled": true
         }
     },
-    "model": "anthropic/claude-opus-5-5",
-    "mcp": {},
     "policies": [
         {
             "action": "tool.use",
@@ -24,11 +23,16 @@
             "effect": "deny"
         }
     ],
-    "permission": {
-        "*": "allow",
-        "external_directory": {
-            "*": "allow",
-            "~/.ssh/**": "deny"
+    "permissions": [
+        {
+            "action": "*",
+            "resource": "*",
+            "effect": "allow"
+        },
+        {
+            "action": "question",
+            "resource": "*",
+            "effect": "deny"
         }
-    }
+    ]
 }
